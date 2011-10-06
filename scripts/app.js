@@ -16,7 +16,7 @@ $(function(){
         response.data.forEach(function(friend){
           $('#test').append('<div>'+friend.id+" a pour amis : "+'</div>');
           getMutualFriends(api.get_session().uid, friend.id).forEach(function(mFriend){
-            $('#test').append('<div>'+mFriend.id+'</div>');
+            $('#test').append('<div>'+JSON.stringify(mFriend)+'</div>');
 		});
           $('#friends').append('<div>'+JSON.stringify(friend)+'</div>');
         });
