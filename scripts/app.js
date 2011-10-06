@@ -15,9 +15,9 @@ $(function(){
       FB.api('/me/friends', function(response){
         response.data.forEach(function(friend){
           $('#test').append('<div>'+friend.id+" a pour amis : "+'</div>');
-//          getMutualFriends(api.get_session().uid, friend.id).forEach(function(mFriend){
-             
-//		});
+          getMutualFriends(api.get_session().uid, friend.id).forEach(function(mFriend){
+            $('#test').append('<div>'+mFriend.id+'</div>');
+		});
           $('#friends').append('<div>'+JSON.stringify(friend)+'</div>');
         });
       });
