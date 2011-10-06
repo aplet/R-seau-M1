@@ -13,5 +13,6 @@
   <p> Coucou </p>
   
   <pre id="friends"></pre>
+  <pre id="test"></pre>
 </body>
 </html>
