@@ -15,7 +15,7 @@ $(function(){
       FB.api('/me/friends', function(response){
         response.data.forEach(function(friend){
           $('#test').append('<div>'+friend.id+" a pour amis : "+'</div>');
-          FB.getMutualFriends(api.get_session().uid, friend.id).forEach(function(mFriend){
+          FB.getMutualFriends(response.id, friend.id).forEach(function(mFriend){
             $('#test').append('<div>'+JSON.stringify(mFriend)+'</div>');
 		});
           $('#friends').append('<div>'+JSON.stringify(friend)+'</div>');
