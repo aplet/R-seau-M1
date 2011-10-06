@@ -14,6 +14,10 @@ $(function(){
 
       FB.api('/me/friends', function(response){
         response.data.forEach(function(friend){
+          $('#test').append('<div>'+friend.id+" a pour amis : "+'</div>');
+//          getMutualFriends(api.get_session().uid, friend.id).forEach(function(mFriend){
+             
+		});
           $('#friends').append('<div>'+JSON.stringify(friend)+'</div>');
         });
       });
@@ -30,3 +34,4 @@ $(function(){
     document.getElementById('fb-root').appendChild(e);
   }());
 });
+
