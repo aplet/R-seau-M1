@@ -32,6 +32,19 @@ window.fbAsyncInit = function() {
 		FB.api(
 		{
 			method: 'fql.query',
+			query: 'SELECT uid2 FROM friend WHERE uid1=me())'
+		},
+		function(response) {
+			for(var i in response)
+			{
+				graphe[response[i]["uid2"]] = new Noeud();
+			}
+		}
+		);
+
+		FB.api(
+		{
+			method: 'fql.query',
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=me()) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())'
 		},
 		function(response) {
