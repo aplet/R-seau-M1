@@ -35,8 +35,10 @@ window.fbAsyncInit = function() {
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=me()) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())'
 		},
 		function(response) {
-			var x = response[0]["uid1"];
-			alert('Id is ' + x);
+			for(var i in response)
+			{
+				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+			}
 		}
 		);
 
