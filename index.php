@@ -7,12 +7,15 @@
   <script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
   <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen" title="no title" charset="utf-8" />
 </head>
+
 <body>
   <div id="fb-root"></div>
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
   <p> Coucou </p>
+	<div id="canvas_container"><\div>
   
   <pre id="friends"></pre>
   <pre id="test"></pre>
 </body>
+
 </html>
