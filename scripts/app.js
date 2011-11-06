@@ -32,12 +32,13 @@ window.fbAsyncInit = function() {
 		FB.api(
 		{
 			method: 'fql.query',
-			query: 'SELECT uid2 FROM friend WHERE uid1=me())'
+			query: 'SELECT uid1, uid2 FROM friend WHERE uid1=me())'
 		},
 		function(response) {
 			for(var i in response)
 			{
 				graphe[response[i]["uid2"]] = new Noeud();
+				$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 		}
 		);
@@ -50,17 +51,17 @@ window.fbAsyncInit = function() {
 		function(response) {
 			for(var i in response)
 			{
-//				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
-				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
+				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+//				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
 		}
 		);
-/*
+
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
 		graphe[0]["voisins"][0] = 1;
 		graphe[1]["voisins"][0] = 0;
-*/	}
+	}
 
 	var initialise_pos = function(graphe)
 	{
