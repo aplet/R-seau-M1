@@ -29,6 +29,7 @@ window.fbAsyncInit = function() {
 
 	var remplit = function(graphe)
 	{
+		var nb_amis = 0, nb_mutual = 0;
 		FB.api(
 		{
 			method: 'fql.query',
@@ -38,6 +39,7 @@ window.fbAsyncInit = function() {
 			for(var i in response)
 			{
 				graphe[response[i]["uid2"]] = new Noeud();
+				nb_amis++;
 //				$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 		}
@@ -51,11 +53,13 @@ window.fbAsyncInit = function() {
 		function(response) {
 			for(var i in response)
 			{
+				nb_mutual++;
 				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
 		}
 		);
+		$('#friends').append('<div>' + nb_amis + " amis\n" + (nb_mutual / 2) + " mutuals\n" + '</div>');
 /*
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
