@@ -51,7 +51,7 @@ window.fbAsyncInit = function() {
 		function(response) {
 			for(var i in response)
 			{
-//				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
 		}
@@ -159,9 +159,9 @@ window.fbAsyncInit = function() {
 		var graphe = new Array();
 
 		remplit(graphe);
-		initialise_pos(graphe);
+//		initialise_pos(graphe);
 //		stabilise(graphe);
-		dessine(graphe);
+//		dessine(graphe);
 
 /*
 		FB.api('/me/friends', function(response_list){
