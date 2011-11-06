@@ -12,7 +12,7 @@
   <div id="fb-root"></div>
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
   <p> Coucou </p>
-	<div id="canvas_container"><\div>
+	<div id="canvas_container"></div>
   
   <pre id="friends"></pre>
   <pre id="test"></pre>
