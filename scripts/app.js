@@ -108,7 +108,7 @@ window.fbAsyncInit = function() {
 		{
 			for(var id2 in graphe[id1]["voisins"])
 			{
-				canvas.path("M " + graphe[id1]["pos_x"] + " " + graphe[id1]["pos_y"] + " l " + graphe[id2]["pos_x"] + " " + graphe[id2]["pos_y"]);
+				canvas.path("M " + 10 * (1 + graphe[id1]["pos_x"]) + " " + 10 * (1 + graphe[id1]["pos_y"]) + " l " + 10 * (1 + graphe[id2]["pos_x"]) + " " + 10 * (1 + graphe[id2]["pos_y"]));
 			}
 		}
 
