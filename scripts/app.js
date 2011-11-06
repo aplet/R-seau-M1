@@ -115,6 +115,7 @@ window.fbAsyncInit = function() {
 		for(var id in graphe)
 		{
 			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
+			$('#test').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 		canvas.circle(50, 50, 10).attr({fill: "red"});
 	}
