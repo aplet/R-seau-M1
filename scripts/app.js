@@ -29,6 +29,8 @@ window.fbAsyncInit = function() {
 
 	var remplit = function(graphe)
 	{
+		var mutual_friends = fql.query("SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=$uid) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=$uid)");
+
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
 		graphe[0]["voisins"][0] = 1;
@@ -122,7 +124,6 @@ window.fbAsyncInit = function() {
 			canvas.circle(dilate(graphe[id]["pos_x"]), dilate(graphe[id]["pos_y"]), rayon).attr({fill: "red"});
 			$('#test').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
-		canvas.circle(50, 50, 10).attr({fill: "red"});
 	}
 
 	var session_handle = function(response){
