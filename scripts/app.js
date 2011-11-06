@@ -37,16 +37,17 @@ window.fbAsyncInit = function() {
 		function(response) {
 			for(var i in response)
 			{
-				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+//				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
 		}
 		);
-
+/*
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
 		graphe[0]["voisins"][0] = 1;
 		graphe[1]["voisins"][0] = 0;
-	}
+*/	}
 
 	var initialise_pos = function(graphe)
 	{
@@ -72,7 +73,7 @@ window.fbAsyncInit = function() {
 		var alpha = 1, k = 1;
 		var limite = 10;
 		var modifie = 1;
-		while(modifie == 1)
+//		while(modifie == 1)
 		{
 			modifie = 0;
 			for(id1 in graphe)
