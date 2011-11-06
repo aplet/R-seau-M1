@@ -49,7 +49,7 @@ window.fbAsyncInit = function() {
 		}
 	}
 
-	var stabilisation = function(graphe){
+	var stabilise = function(graphe){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
 		var delta_t = 1;
 		var alpha = 1, k = 1;
