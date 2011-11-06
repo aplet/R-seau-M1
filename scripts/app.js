@@ -29,7 +29,16 @@ window.fbAsyncInit = function() {
 
 	var remplit = function(graphe)
 	{
-		var mutual_friends = fql.query("SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=$uid) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=$uid)");
+		FB.api(
+		{
+			method: 'fql.query',
+			query: 'SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=' + me() + ') AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=' + me() + ')'
+		},
+		function(response) {
+			var x = response[0]["uid1"];
+			alert('Id is ' + x);
+		}
+		);
 
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
