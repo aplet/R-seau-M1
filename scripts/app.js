@@ -114,8 +114,9 @@ window.fbAsyncInit = function() {
 		//dessin des points
 		for(var id in graphe)
 		{
-			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon);
+			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
 		}
+		canvas.circle(50, 50, 10).attr({fill: "red"});
 	}
 
 	var session_handle = function(response){
