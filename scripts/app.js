@@ -25,11 +25,12 @@ window.fbAsyncInit = function() {
 	}
 
 	var compteur = 0;
-	$('#cible').innerHtml = '';
+	$('#cible').innerHtml = '<div> Salut </div>';
+//	$('#cible').innerHtml = '';
 
 	var affichage = function()
 	{
-		$('#cible').innerHtml = '<div>' + "Salut " + (compteur++) + "\n" + '</div>';
+//		$('#cible').innerHtml = '<div>' + "Salut " + (compteur++) + "\n" + '</div>';
 	}
 
 //	var remplit = function()
