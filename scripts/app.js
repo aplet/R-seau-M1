@@ -25,7 +25,20 @@ window.fbAsyncInit = function() {
 	}
 
 	var compteur = 0;
-	$('#cible').innerHtml = '<div> Salut </div>';
+
+
+	FB.api(
+	{
+		method: 'fql.query',
+		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=me()'
+	},
+	function(response) {
+		for(var it in response)
+		{
+			$('#cible').append('<div>' + "Name : " + response[it]["name"] + "\nBirthday : " + response[it]["birthday"] + '</div>')
+		}
+	}
+	);
 //	$('#cible').innerHtml = '';
 
 	var affichage = function()
