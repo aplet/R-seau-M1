@@ -12,6 +12,7 @@ window.fbAsyncInit = function() {
 	var height = 600;
 	var rayon = 5;
 	var epaisseur = 1;
+	var graphe = new Array();
 
 	var dilate = function(c){
 		return (20 * (1 + c));
@@ -27,7 +28,7 @@ window.fbAsyncInit = function() {
 		this.voisins = new Array()
 	}
 
-	var remplit = function(graphe)
+	var remplit = function()
 	{
 		var nb_amis = 0, nb_mutual = 0;
 		FB.api(
@@ -68,7 +69,7 @@ window.fbAsyncInit = function() {
 		graphe[1]["voisins"][0] = 0;
 */	}
 
-	var initialise_pos = function(graphe)
+	var initialise_pos = function()
 	{
 		var tmp = 0, i = 0, j = 0;
 		var taille = graphe["length"];
@@ -86,7 +87,7 @@ window.fbAsyncInit = function() {
 		}
 	}
 
-	var stabilise = function(graphe){
+	var stabilise = function(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
 		var delta_t = 1;
 		var alpha = 1, k = 1;
@@ -136,7 +137,7 @@ window.fbAsyncInit = function() {
 		}
 	}
 
-	var dessine = function(graphe)
+	var dessine = function()
 	{
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
 /*
@@ -163,12 +164,11 @@ window.fbAsyncInit = function() {
 		if (!response.session) return $('#login').show();
 		$('#login').hide();
 
-		var graphe = new Array();
 
-		remplit(graphe);
-		initialise_pos(graphe);
-//		stabilise(graphe);
-		dessine(graphe);
+		remplit();
+		initialise_pos();
+//		stabilise();
+		dessine();
 
 /*
 		FB.api('/me/friends', function(response_list){
