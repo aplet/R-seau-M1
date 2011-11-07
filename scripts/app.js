@@ -14,10 +14,6 @@ window.fbAsyncInit = function() {
 	var epaisseur = 1;
 	var graphe = new Array();
 
-	var dilate = function(c){
-		return (20 * (1 + c));
-	}
-
 	var Noeud = function(){
 		this.pos_x = 0;
 		this.pos_y = 0;
@@ -77,8 +73,8 @@ window.fbAsyncInit = function() {
 		var borne = Math.sqrt(taille);
 		for(var id in graphe)
 		{
-			graphe[id]["pos_x"] = i;
-			graphe[id]["pos_y"] = j;
+			graphe[id]["pos_x"] = 20 + 5 * i;
+			graphe[id]["pos_y"] = 20 + 5 * j;
 			j++;
 			if(j >= borne)
 			{
@@ -147,7 +143,7 @@ window.fbAsyncInit = function() {
 		{
 			for(var id2 in graphe[id1]["voisins"])
 			{
-				canvas.path("M " + dilate(graphe[id1]["pos_x"]) + " " + dilate(graphe[id1]["pos_y"]) + " L " + dilate(graphe[id2]["pos_x"]) + " " + dilate(graphe[id2]["pos_y"]));
+				canvas.path("M " + graphe[id1]["pos_x"] + " " + graphe[id1]["pos_y"] + " L " + graphe[id2]["pos_x"] + " " + graphe[id2]["pos_y"]);
 			}
 		}
 
@@ -156,7 +152,7 @@ window.fbAsyncInit = function() {
 		//dessin des points
 		for(var id in graphe)
 		{
-//			canvas.circle(dilate(graphe[id]["pos_x"]), dilate(graphe[id]["pos_y"]), rayon).attr({fill: "red"});
+			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
 			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 	}
