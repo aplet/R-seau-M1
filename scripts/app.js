@@ -35,6 +35,7 @@ window.fbAsyncInit = function() {
 	function(response) {
 		for(var it in response)
 		{
+			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
 			$('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
