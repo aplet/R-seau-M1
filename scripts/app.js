@@ -25,10 +25,11 @@ window.fbAsyncInit = function() {
 	}
 
 	var compteur = 0;
+	$('#cible').innerHtml = '';
 
 	var affichage = function()
 	{
-		$('#cible').replaceWith('<div>' + "Salut " + (compteur++) + "\n" + '</div>');
+		$('#cible').innerHtml = '<div>' + "Salut " + (compteur++) + "\n" + '</div>';
 	}
 
 //	var remplit = function()
