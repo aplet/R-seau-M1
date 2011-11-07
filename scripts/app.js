@@ -165,7 +165,7 @@ window.fbAsyncInit = function() {
 		var graphe = new Array();
 
 		remplit(graphe);
-//		initialise_pos(graphe);
+		initialise_pos(graphe);
 //		stabilise(graphe);
 //		dessine(graphe);
 
