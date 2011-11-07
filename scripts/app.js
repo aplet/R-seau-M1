@@ -27,7 +27,7 @@ window.fbAsyncInit = function() {
 //	var remplit = function()
 	var fait_tout = function()
 	{
-/*		var nb_amis = 0, nb_mutual = 0;
+		var nb_amis = 0, nb_mutual = 0;
 		FB.api(
 		{
 			method: 'fql.query',
@@ -59,7 +59,8 @@ window.fbAsyncInit = function() {
 			}
 		}
 		);
-*/
+
+/*
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
 		graphe[2] = new Noeud();
@@ -84,6 +85,7 @@ window.fbAsyncInit = function() {
 		graphe[4]["voisins"][5] = 5;
 		graphe[5]["voisins"][3] = 3;
 		graphe[5]["voisins"][4] = 4;
+*/
 //	}
 
 //	var initialise_pos = function()
@@ -110,8 +112,8 @@ window.fbAsyncInit = function() {
 		var alpha = 1, k = 0.5;
 		var limite = 10;
 		var modifie = 1;
-		while(modifie == 1)
-//		for(var ind = 0 ; ind < 351 ; ind++)
+//		while(modifie == 1)
+		for(var ind = 0 ; ind < 0 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
