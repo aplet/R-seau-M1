@@ -35,7 +35,9 @@ window.fbAsyncInit = function() {
 	function(response) {
 		for(var it in response)
 		{
-			$('#cible').append('<div>' + "Name : " + response[it]["name"] + "\nBirthday : " + response[it]["birthday"] + '</div>')
+			$('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
+			if(response[it]["birthday"])
+				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 		}
 	}
 	);
