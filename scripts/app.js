@@ -49,7 +49,7 @@ window.fbAsyncInit = function() {
 		},
 		function(response) {
 			nb_mutual = response["length"];
-			$('#friends').append('<div>' + (nb_mutual / 2) + " mutuals\n" + '</div>');
+//			$('#friends').append('<div>' + (nb_mutual / 2) + " mutuals\n" + '</div>');
 			for(var i in response)
 			{
 //				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
@@ -108,7 +108,7 @@ window.fbAsyncInit = function() {
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 375 ; ind++)
+		for(var ind = 0 ; ind < 75 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
@@ -146,14 +146,14 @@ window.fbAsyncInit = function() {
 					graphe[id1]["vit_y"] += graphe[id1]["acc_y"] * delta_t;
 					graphe[id1]["pos_x"] += graphe[id1]["vit_x"] * delta_t;
 					graphe[id1]["pos_y"] += graphe[id1]["vit_y"] * delta_t;
-					if(graphe[id1]["pos_x"] < 5)
-						graphe[id1]["pos_x"] = 5;
-					if(graphe[id1]["pos_x"] > (width - 5))
-						graphe[id1]["pos_x"] = width - 5;
-					if(graphe[id1]["pos_y"] < 5)
-						graphe[id1]["pos_y"] = 5;
-					if(graphe[id1]["pos_y"] > (height - 5))
-						graphe[id1]["pos_y"] = height - 5;
+					if(graphe[id1]["pos_x"] < (rayon + 1))
+						graphe[id1]["pos_x"] = rayon + 1;
+					if(graphe[id1]["pos_x"] > (width - (rayon + 1)))
+						graphe[id1]["pos_x"] = width - (rayon + 1);
+					if(graphe[id1]["pos_y"] < (rayon + 1))
+						graphe[id1]["pos_y"] = rayon + 1;
+					if(graphe[id1]["pos_y"] > (height - (rayon + 1)))
+						graphe[id1]["pos_y"] = height - (rayon + 1);
 					modifie = 1;
 				}
 			}
