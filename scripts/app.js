@@ -36,10 +36,11 @@ window.fbAsyncInit = function() {
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1=me()'
 		},
 		function(response) {
+			nb_amis = response["length"];
+			$('#friends').append('<div>' + nb_amis + " amis\n" + '</div>');
 			for(var i in response)
 			{
 				graphe[response[i]["uid2"]] = new Noeud();
-				nb_amis++;
 //				$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 		}
@@ -51,9 +52,10 @@ window.fbAsyncInit = function() {
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=me()) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())'
 		},
 		function(response) {
+			nb_mutual = response["length"];
+			$('#friends').append('<div>' + (nb_mutual / 2) + " mutuals\n" + '</div>');
 			for(var i in response)
 			{
-				nb_mutual++;
 				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
