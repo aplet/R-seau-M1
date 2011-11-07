@@ -41,8 +41,6 @@ window.fbAsyncInit = function() {
 				graphe[response[i]["uid2"]] = new Noeud();
 //				$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
-		}
-		);
 
 		FB.api(
 		{
@@ -57,9 +55,6 @@ window.fbAsyncInit = function() {
 //				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
-		}
-		);
-
 /*
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
@@ -178,6 +173,12 @@ window.fbAsyncInit = function() {
 			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
 			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
+
+		}
+		);
+
+		}
+		);
 	}
 
 	var session_handle = function(response){
