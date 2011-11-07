@@ -146,6 +146,14 @@ window.fbAsyncInit = function() {
 					graphe[id1]["vit_y"] += graphe[id1]["acc_y"] * delta_t;
 					graphe[id1]["pos_x"] += graphe[id1]["vit_x"] * delta_t;
 					graphe[id1]["pos_y"] += graphe[id1]["vit_y"] * delta_t;
+					if(graphe[id1]["pos_x"] < 5)
+						graphe[id1]["pos_x"] = 5;
+					if(graphe[id1]["pos_x"] > (width - 5))
+						graphe[id1]["pos_x"] = width - 5;
+					if(graphe[id1]["pos_y"] < 5)
+						graphe[id1]["pos_y"] = 5;
+					if(graphe[id1]["pos_y"] > (height - 5))
+						graphe[id1]["pos_y"] = height - 5;
 					modifie = 1;
 				}
 			}
