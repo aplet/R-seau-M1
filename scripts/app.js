@@ -140,7 +140,7 @@ window.fbAsyncInit = function() {
 	var dessine = function(graphe)
 	{
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
-
+/*
 		//dessin des arêtes
 		for(var id1 in graphe)
 		{
@@ -149,11 +149,11 @@ window.fbAsyncInit = function() {
 				canvas.path("M " + dilate(graphe[id1]["pos_x"]) + " " + dilate(graphe[id1]["pos_y"]) + " L " + dilate(graphe[id2]["pos_x"]) + " " + dilate(graphe[id2]["pos_y"]));
 			}
 		}
-
+*/
 		//dessin des points
 		for(var id in graphe)
 		{
-			canvas.circle(dilate(graphe[id]["pos_x"]), dilate(graphe[id]["pos_y"]), rayon).attr({fill: "red"});
+//			canvas.circle(dilate(graphe[id]["pos_x"]), dilate(graphe[id]["pos_y"]), rayon).attr({fill: "red"});
 			$('#test').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 	}
@@ -167,7 +167,7 @@ window.fbAsyncInit = function() {
 		remplit(graphe);
 		initialise_pos(graphe);
 //		stabilise(graphe);
-//		dessine(graphe);
+		dessine(graphe);
 
 /*
 		FB.api('/me/friends', function(response_list){
