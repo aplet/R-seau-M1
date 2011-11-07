@@ -17,9 +17,7 @@
   <div id="fb-root"></div>
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
 	<div id="canvas_container"></div>
-	<div class = cible_t id="cible">
-	Ici gît mon corps
-	</div>
+	<div class = cible_t id="cible"></div>
   
   <pre id="friends"></pre>
   <pre id="test"></pre>

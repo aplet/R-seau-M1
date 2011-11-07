@@ -24,6 +24,13 @@ window.fbAsyncInit = function() {
 		this.voisins = new Array()
 	}
 
+	var compteur = 0;
+
+	var affichage = function()
+	{
+		$(#"cible").remove().append('<div>' + "Salut " + (compteur++) + "\n" + '</div>');
+	}
+
 //	var remplit = function()
 	var fait_tout = function()
 	{
@@ -108,7 +115,7 @@ window.fbAsyncInit = function() {
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 75 ; ind++)
+		for(var ind = 0 ; ind < 50 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
@@ -178,7 +185,7 @@ window.fbAsyncInit = function() {
 		//dessin des points
 		for(var id in graphe)
 		{
-			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
+			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"}).mouseover(affichage);
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
