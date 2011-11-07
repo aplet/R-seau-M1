@@ -87,7 +87,7 @@ window.fbAsyncInit = function() {
 //	{
 		var tmp = 0, i = 0, j = 0;
 		var borne = Math.sqrt(nb_amis);
-		$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
+//		$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
 		for(var id in graphe)
 		{
 			graphe[id]["pos_x"] = 50 + 20 * i;
