@@ -26,7 +26,7 @@ window.fbAsyncInit = function() {
 
 	var compteur = 0;
 
-
+/*
 	FB.api(
 	{
 		method: 'fql.query',
@@ -35,17 +35,33 @@ window.fbAsyncInit = function() {
 	function(response) {
 		for(var it in response)
 		{
-			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
+//			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
 			$('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 		}
 	}
 	);
+*/
 //	$('#cible').innerHtml = '';
 
 	var affichage = function()
 	{
+	FB.api(
+	{
+		method: 'fql.query',
+		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.data("uid")
+	},
+	function(response) {
+		for(var it in response)
+		{
+//			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
+			$('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
+			if(response[it]["birthday"])
+				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
+		}
+	}
+	);
 //		$('#cible').innerHtml = '<div>' + "Salut " + (compteur++) + "\n" + '</div>';
 	}
 
@@ -203,7 +219,7 @@ window.fbAsyncInit = function() {
 		//dessin des points
 		for(var id in graphe)
 		{
-			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"}).mouseover(affichage);
+			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"}).data("uid", graphe[id]).mouseover(affichage);
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
