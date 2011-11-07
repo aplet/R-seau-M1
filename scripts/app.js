@@ -62,8 +62,28 @@ window.fbAsyncInit = function() {
 */
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
+		graphe[2] = new Noeud();
+		graphe[3] = new Noeud();
+		graphe[4] = new Noeud();
+		graphe[5] = new Noeud();
 		graphe[0]["voisins"][1] = 1;
+		graphe[0]["voisins"][2] = 2;
 		graphe[1]["voisins"][0] = 0;
+		graphe[1]["voisins"][2] = 2;
+		graphe[1]["voisins"][3] = 3;
+		graphe[2]["voisins"][0] = 0;
+		graphe[2]["voisins"][1] = 1;
+		graphe[2]["voisins"][3] = 3;
+		graphe[2]["voisins"][4] = 4;
+		graphe[3]["voisins"][1] = 1;
+		graphe[3]["voisins"][2] = 2;
+		graphe[3]["voisins"][4] = 4;
+		graphe[3]["voisins"][5] = 5;
+		graphe[4]["voisins"][2] = 2;
+		graphe[4]["voisins"][3] = 3;
+		graphe[4]["voisins"][5] = 5;
+		graphe[5]["voisins"][3] = 3;
+		graphe[5]["voisins"][4] = 4;
 //	}
 
 //	var initialise_pos = function()
