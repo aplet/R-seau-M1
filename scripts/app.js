@@ -103,12 +103,12 @@ window.fbAsyncInit = function() {
 
 //	var stabilise = function(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
-		var delta_t = 0.05;
+		var delta_t = 0.06;
 		var alpha = 1, k = 0.5;
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 100 ; ind++)
+		for(var ind = 0 ; ind < 150 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
@@ -179,7 +179,7 @@ window.fbAsyncInit = function() {
 		for(var id in graphe)
 		{
 			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"});
-			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
+//			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
 		}
