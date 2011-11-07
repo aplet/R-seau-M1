@@ -149,6 +149,8 @@ window.fbAsyncInit = function() {
 			}
 		}
 */
+
+		$('#test').append('<div>' + graphe["length"] + "amis ?\n" + '</div>');
 		//dessin des points
 		for(var id in graphe)
 		{
