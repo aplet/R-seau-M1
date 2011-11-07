@@ -93,8 +93,8 @@ window.fbAsyncInit = function() {
 		var borne = Math.sqrt(taille);
 		for(var id in graphe)
 		{
-			graphe[id]["pos_x"] = 20 + 20 * i;
-			graphe[id]["pos_y"] = 20 + 20 * j;
+			graphe[id]["pos_x"] = 50 + 20 * i;
+			graphe[id]["pos_y"] = 50 + 20 * j;
 			j++;
 			if(j >= borne)
 			{
@@ -110,8 +110,8 @@ window.fbAsyncInit = function() {
 		var alpha = 1, k = 1;
 		var limite = 10;
 		var modifie = 1;
-//		while(modifie == 1)
-		for(var ind = 0 ; ind < 10 ; ind++)
+		while(modifie == 1)
+//		for(var ind = 0 ; ind < 10 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
@@ -125,7 +125,7 @@ window.fbAsyncInit = function() {
 						delta_x = graphe[id1]["pos_x"] - graphe[id2]["pos_x"];
 						delta_y = graphe[id1]["pos_y"] - graphe[id2]["pos_y"];
 						distance = Math.max(1, Math.sqrt(delta_x * delta_x + delta_y * delta_y));
-						force = alpha / (distance + distance);
+						force = alpha / distance;
 						graphe[id1]["acc_x"] += force * (delta_x / distance);
 						graphe[id1]["acc_y"] += force * (delta_y / distance);
 					}
