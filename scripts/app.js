@@ -106,7 +106,7 @@ window.fbAsyncInit = function() {
 
 //	var stabilise = function(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
-		var delta_t = 1;
+		var delta_t = 0.1;
 		var alpha = 1, k = 1;
 		var limite = 10;
 		var modifie = 1;
