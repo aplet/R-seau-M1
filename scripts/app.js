@@ -28,7 +28,7 @@ window.fbAsyncInit = function() {
 
 	var affichage = function()
 	{
-		$('#cible').append('<div>' + "Salut " + (compteur++) + "\n" + '</div>');
+		$('#cible').replaceWith('<div>' + "Salut " + (compteur++) + "\n" + '</div>');
 	}
 
 //	var remplit = function()
