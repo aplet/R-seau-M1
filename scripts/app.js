@@ -56,7 +56,7 @@ window.fbAsyncInit = function() {
 			$('#friends').append('<div>' + (nb_mutual / 2) + " mutuals\n" + '</div>');
 			for(var i in response)
 			{
-				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
+//				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
 			}
 		}
