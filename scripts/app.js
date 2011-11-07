@@ -61,7 +61,6 @@ window.fbAsyncInit = function() {
 			}
 		}
 		);
-		$('#friends').append('<div>' + nb_amis + " amis\n" + (nb_mutual / 2) + " mutuals\n" + '</div>');
 /*
 		graphe[0] = new Noeud();
 		graphe[1] = new Noeud();
@@ -154,7 +153,7 @@ window.fbAsyncInit = function() {
 		for(var id in graphe)
 		{
 //			canvas.circle(dilate(graphe[id]["pos_x"]), dilate(graphe[id]["pos_y"]), rayon).attr({fill: "red"});
-			$('#test').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
+			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 	}
 
