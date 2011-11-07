@@ -71,7 +71,7 @@ window.fbAsyncInit = function() {
 //	}
 
 //	var initialise_pos = function()
-	{
+//	{
 		var tmp = 0, i = 0, j = 0;
 		var taille = graphe["length"];
 		var borne = Math.sqrt(taille);
@@ -86,7 +86,7 @@ window.fbAsyncInit = function() {
 				j = 0;
 			}
 		}
-	}
+//	}
 
 //	var stabilise = function(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
@@ -136,7 +136,7 @@ window.fbAsyncInit = function() {
 				}
 			}
 		}
-	}
+//	}
 
 //	var dessine = function()
 //	{
