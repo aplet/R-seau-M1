@@ -219,7 +219,10 @@ window.fbAsyncInit = function() {
 		//dessin des points
 		for(var id in graphe)
 		{
-			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon).attr({fill: "red"}).data("uid", graphe[id]).mouseover(affichage);
+			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon)
+				.attr({fill: "blue"})
+//				.data("uid", graphe[id])
+//				.mouseover(affichage);
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
