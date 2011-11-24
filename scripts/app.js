@@ -53,12 +53,12 @@ window.fbAsyncInit = function() {
 		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.id
 	},
 	function(response) {
-		$('#cible').innerHTML = "";
+		$("div").remove(".name");
 		for(var it in response)
 		{
-			$('#image').src = "http://graph.facebook.com/"+response[it][name]+"/picture";
+			$('#image').src = "http://graph.facebook.com/"+response[it]["name"]+"/picture";
 //			var name = "Name : " + response[it]["name"];
-			$('#cible').innerHTML = response[it]["name"];
+			$('#cible').append('<div class="name">' + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 		}
