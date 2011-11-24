@@ -195,8 +195,8 @@ window.fbAsyncInit = function() {
 		{
 			canvas.circle(graphe[id]["pos_x"], graphe[id]["pos_y"], rayon)
 				.attr({fill: "blue"})
-				.mouseover(affichage);
-				.id = id
+				.mouseover(affichage)
+				.id = id;
 //				.data("uid", graphe[id])
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
