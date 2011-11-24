@@ -94,34 +94,8 @@ window.fbAsyncInit = function() {
 			for(var i in response)
 			{
 //				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
-				graphe[response[i]["uid1"]]["voisins"][response[i]["uid2"]] = response[i]["uid2"];
+				(graphe[response[i]["uid1"]]["voisins"])[response[i]["uid2"]] = response[i]["uid2"];
 			}
-/*
-		graphe[0] = new Noeud();
-		graphe[1] = new Noeud();
-		graphe[2] = new Noeud();
-		graphe[3] = new Noeud();
-		graphe[4] = new Noeud();
-		graphe[5] = new Noeud();
-		graphe[0]["voisins"][1] = 1;
-		graphe[0]["voisins"][2] = 2;
-		graphe[1]["voisins"][0] = 0;
-		graphe[1]["voisins"][2] = 2;
-		graphe[1]["voisins"][3] = 3;
-		graphe[2]["voisins"][0] = 0;
-		graphe[2]["voisins"][1] = 1;
-		graphe[2]["voisins"][3] = 3;
-		graphe[2]["voisins"][4] = 4;
-		graphe[3]["voisins"][1] = 1;
-		graphe[3]["voisins"][2] = 2;
-		graphe[3]["voisins"][4] = 4;
-		graphe[3]["voisins"][5] = 5;
-		graphe[4]["voisins"][2] = 2;
-		graphe[4]["voisins"][3] = 3;
-		graphe[4]["voisins"][5] = 5;
-		graphe[5]["voisins"][3] = 3;
-		graphe[5]["voisins"][4] = 4;
-*/
 //	}
 
 //	var initialise_pos = function()
@@ -149,7 +123,7 @@ window.fbAsyncInit = function() {
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 50 ; ind++)
+		for(var ind = 0 ; ind < 20 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
