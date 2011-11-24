@@ -50,7 +50,7 @@ window.fbAsyncInit = function() {
 	FB.api(
 	{
 		method: 'fql.query',
-		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.data("uid")
+		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.id
 	},
 	function(response) {
 		for(var it in response)
