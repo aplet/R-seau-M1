@@ -53,9 +53,10 @@ window.fbAsyncInit = function() {
 		query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.id
 	},
 	function(response) {
+		$('#cible').innerHTML = "";
 		for(var it in response)
 		{
-//			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
+			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
 			$('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
