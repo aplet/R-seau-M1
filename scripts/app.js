@@ -119,7 +119,7 @@ window.fbAsyncInit = function() {
 //	var stabilise = function(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
 		var delta_t = 0.06;
-		var alpha = 5, k = 5;
+		var alpha = 2, k = 0.5;
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
