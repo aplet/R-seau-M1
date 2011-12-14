@@ -119,7 +119,7 @@ window.fbAsyncInit = function() {
 		}
 //	}
 
-//	var stabilise = function(){
+//	function stabilise(){
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
 		var delta_t = 0.05;
 		var alpha = 100, k = 0.5;
@@ -180,12 +180,11 @@ window.fbAsyncInit = function() {
 					if(n1["pos_y"] > (height - (rayon + 1)))
 						n1["pos_y"] = height - (rayon + 1);
 					modifie = 1;
-				}
 			}
 		}
 //	}
 
-//	var dessine = function()
+//	function dessine()
 //	{
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
 
@@ -211,7 +210,7 @@ window.fbAsyncInit = function() {
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
-		}
+//		}
 		);
 
 		}
