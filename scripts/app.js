@@ -126,7 +126,7 @@ window.fbAsyncInit = function() {
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 20 ; ind++)
+		for(var ind = 0 ; ind < 50 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
