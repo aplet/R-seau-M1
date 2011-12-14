@@ -198,14 +198,16 @@ window.fbAsyncInit = function() {
 		if(min_y > y) min_y = y;
 		if(max_y < y) max_y = y;
 	}
+//	$('#test').append('<div>' + "(" + min_x + ", " + max_x + ")" + '</div');
+//	$('#test').append('<div>' + "(" + min_y + ", " + max_y + ")" + '</div');
 	var c_x = width / (max_x - min_x);
 	var c_y = height / (max_y - min_y);
 	for(var id in graphe)
 	{
 		var n = graphe[id];
-		n["pos_x"] = (n["pos_x"] - min_x) / c_x;
-		n["pos_y"] = (n["pos_y"] - min_y) / c_y;
-		$('#test').append('<div>' + "(" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div');
+		n["pos_x"] = (n["pos_x"] - min_x) * c_x;
+		n["pos_y"] = (n["pos_y"] - min_y) * c_y;
+//		$('#test').append('<div>' + "(" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div');
 	}
 
 //	function dessine()
