@@ -57,7 +57,7 @@ window.fbAsyncInit = function() {
 		$("div").remove(".name");
 		for(var it in response)
 		{
-			$('#image').src = "http://graph.facebook.com/"+this.id+"/picture";
+			$('#image').src = "http://graph.facebook.com/"+ response[it]["name"] +"/picture";
 			$('#cible').append('<div class="name">' + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
