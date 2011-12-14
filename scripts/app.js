@@ -184,6 +184,29 @@ window.fbAsyncInit = function() {
 		}
 //	}
 
+//	function normalize()
+//	{
+
+	var min_x = 1000, max_x = 0, min_y = 1000, max_y = 0;
+	for(var id in graphe)
+	{
+		var n = graphe[id];
+		var x = n["pos_x"];
+		var y = n["pos_y"];
+		if(min_x > x) min_x = x;
+		if(max_x < x) max_x = x;
+		if(min_y > y) min_y = y;
+		if(max_y < y) max_y = y;
+	}
+	var c_x = width / (max_x - min_x);
+	var c_y = height / (max_y - min_y);
+	for(var id in graphe)
+	{
+		var n = graphe[id];
+		n["pos_x"] = (n["pos_x"] - min_x) / c_x;
+		n["pos_y"] = (n["pos_y"] - min_y) / c_y;
+	}
+
 //	function dessine()
 //	{
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
