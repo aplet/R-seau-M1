@@ -205,6 +205,7 @@ window.fbAsyncInit = function() {
 		var n = graphe[id];
 		n["pos_x"] = (n["pos_x"] - min_x) / c_x;
 		n["pos_y"] = (n["pos_y"] - min_y) / c_y;
+		$('#test').append('<div>' + "(" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div');
 	}
 
 //	function dessine()
