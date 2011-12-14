@@ -123,6 +123,7 @@ window.fbAsyncInit = function() {
 		var id1, id2, voisins, delta_x, delta_y, distance, force;
 		var delta_t = 0.6;
 		var alpha = 10, k = 0.5;
+		var min_dist = 0.5;
 		var limite = 0;
 		var modifie = 1;
 //		while(modifie == 1)
@@ -155,10 +156,13 @@ window.fbAsyncInit = function() {
 				{
 					delta_x = n1["pos_x"] - graphe[id2]["pos_x"];
 					delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
-//					distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-					force = k;
-					n1["acc_x"] -= force * delta_x;
-					n1["acc_y"] -= force * delta_y;
+					distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+					if(distance > min_dist)
+					{
+						force = k;
+						n1["acc_x"] -= force * delta_x;
+						n1["acc_y"] -= force * delta_y;
+					}
 				}
 				if(n1["acc_x"] * n1["acc_x"] + n1["acc_y"] * n1["acc_y"] > limite)
 				{
