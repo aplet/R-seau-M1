@@ -126,7 +126,7 @@ window.fbAsyncInit = function() {
 		var limite = 10;
 		var modifie = 1;
 //		while(modifie == 1)
-		for(var ind = 0 ; ind < 50 ; ind++)
+		for(var ind = 0 ; ind < 20 ; ind++)
 		{
 			modifie = 0;
 			for(id1 in graphe)
@@ -141,9 +141,9 @@ window.fbAsyncInit = function() {
 						delta_x = n1["pos_x"] - graphe[id2]["pos_x"];
 						delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
 						distance = Math.max(1, Math.sqrt(delta_x * delta_x + delta_y * delta_y));
-						force = alpha / distance;
-						n1["acc_x"] += force * (delta_x / distance);
-						n1["acc_y"] += force * (delta_y / distance);
+						force = alpha / (distance * distance);
+						n1["acc_x"] += force * delta_x;
+						n1["acc_y"] += force * delta_y;
 					}
 				}
 			}
@@ -155,10 +155,10 @@ window.fbAsyncInit = function() {
 				{
 					delta_x = n1["pos_x"] - graphe[id2]["pos_x"];
 					delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
-					distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
-					force = k * distance;
-					n1["acc_x"] -= force * (delta_x / distance);
-					n1["acc_y"] -= force * (delta_y / distance);
+//					distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+					force = k;
+					n1["acc_x"] -= force * delta_x;
+					n1["acc_y"] -= force * delta_y;
 				}
 				if(n1["acc_x"] * n1["acc_x"] + n1["acc_y"] * n1["acc_y"] > limite)
 				{
