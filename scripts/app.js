@@ -5,6 +5,7 @@ window.fbAsyncInit = function() {
 		appId  : 237593246291922, 
 		status : true, 
 		cookie : true,
+		oauth : true,
 		xfbml  : true
 	});
 
@@ -57,7 +58,6 @@ window.fbAsyncInit = function() {
 		for(var it in response)
 		{
 			$('#image').src = "http://graph.facebook.com/"+response[it]["name"]+"/picture";
-//			var name = "Name : " + response[it]["name"];
 			$('#cible').append('<div class="name">' + response[it]["name"] + '</div>');
 			if(response[it]["birthday"])
 				$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
@@ -97,6 +97,7 @@ window.fbAsyncInit = function() {
 			{
 //				$('#test').append('<div>' + response[i]["uid1"] + " <--> " + response[i]["uid2"] + '</div>');
 				(graphe[response[i]["uid1"]]["voisins"])[response[i]["uid2"]] = response[i]["uid2"];
+				(graphe[response[i]["uid2"]]["voisins"])[response[i]["uid1"]] = response[i]["uid1"];
 			}
 //	}
 
@@ -130,47 +131,49 @@ window.fbAsyncInit = function() {
 			modifie = 0;
 			for(id1 in graphe)
 			{
-				graphe[id1]["acc_x"] = 0;
-				graphe[id1]["acc_y"] = 0;
+				var n1 = graphe[id1];
+				n1["acc_x"] = 0;
+				n1["acc_y"] = 0;
 				for(id2 in graphe)
 				{
 					if(id1 != id2)
 					{
-						delta_x = graphe[id1]["pos_x"] - graphe[id2]["pos_x"];
-						delta_y = graphe[id1]["pos_y"] - graphe[id2]["pos_y"];
+						delta_x = n1["pos_x"] - graphe[id2]["pos_x"];
+						delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
 						distance = Math.max(1, Math.sqrt(delta_x * delta_x + delta_y * delta_y));
 						force = alpha / distance;
-						graphe[id1]["acc_x"] += force * (delta_x / distance);
-						graphe[id1]["acc_y"] += force * (delta_y / distance);
+						n1["acc_x"] += force * (delta_x / distance);
+						n1["acc_y"] += force * (delta_y / distance);
 					}
 				}
 			}
 			for(id1 in graphe)
 			{
-				voisins = graphe[id1]["voisins"];
+				var n1 = graphe[id1];
+				voisins = n1["voisins"];
 				for(id2 in voisins)
 				{
-					delta_x = graphe[id1]["pos_x"] - graphe[id2]["pos_x"];
-					delta_y = graphe[id1]["pos_y"] - graphe[id2]["pos_y"];
+					delta_x = n1["pos_x"] - graphe[id2]["pos_x"];
+					delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
 					distance = Math.sqrt(delta_x * delta_x + delta_y * delta_y);
 					force = k * distance;
-					graphe[id1]["acc_x"] -= force * (delta_x / distance);
-					graphe[id1]["acc_y"] -= force * (delta_y / distance);
+					n1["acc_x"] -= force * (delta_x / distance);
+					n1["acc_y"] -= force * (delta_y / distance);
 				}
-				if(graphe[id1]["acc_x"] * graphe[id1]["acc_x"] + graphe[id1]["acc_y"] * graphe[id1]["acc_y"] > limite)
+				if(n1["acc_x"] * n1["acc_x"] + n1["acc_y"] * n1["acc_y"] > limite)
 				{
-					graphe[id1]["vit_x"] += graphe[id1]["acc_x"] * delta_t;
-					graphe[id1]["vit_y"] += graphe[id1]["acc_y"] * delta_t;
-					graphe[id1]["pos_x"] += graphe[id1]["vit_x"] * delta_t;
-					graphe[id1]["pos_y"] += graphe[id1]["vit_y"] * delta_t;
-					if(graphe[id1]["pos_x"] < (rayon + 1))
-						graphe[id1]["pos_x"] = rayon + 1;
-					if(graphe[id1]["pos_x"] > (width - (rayon + 1)))
-						graphe[id1]["pos_x"] = width - (rayon + 1);
-					if(graphe[id1]["pos_y"] < (rayon + 1))
-						graphe[id1]["pos_y"] = rayon + 1;
-					if(graphe[id1]["pos_y"] > (height - (rayon + 1)))
-						graphe[id1]["pos_y"] = height - (rayon + 1);
+					n1["vit_x"] += n1["acc_x"] * delta_t;
+					n1["vit_y"] += n1["acc_y"] * delta_t;
+					n1["pos_x"] += n1["vit_x"] * delta_t;
+					n1["pos_y"] += n1["vit_y"] * delta_t;
+					if(n1["pos_x"] < (rayon + 1))
+						n1["pos_x"] = rayon + 1;
+					if(n1["pos_x"] > (width - (rayon + 1)))
+						n1["pos_x"] = width - (rayon + 1);
+					if(n1["pos_y"] < (rayon + 1))
+						n1["pos_y"] = rayon + 1;
+					if(n1["pos_y"] > (height - (rayon + 1)))
+						n1["pos_y"] = height - (rayon + 1);
 					modifie = 1;
 				}
 			}
@@ -211,7 +214,7 @@ window.fbAsyncInit = function() {
 	}
 
 	var session_handle = function(response){
-		if (!response.session) return $('#login').show();
+		if (!response.authResponse) return $('#login').show();
 		$('#login').hide();
 
 
