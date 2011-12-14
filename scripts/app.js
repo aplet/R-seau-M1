@@ -200,13 +200,13 @@ window.fbAsyncInit = function() {
 	}
 //	$('#test').append('<div>' + "(" + min_x + ", " + max_x + ")" + '</div');
 //	$('#test').append('<div>' + "(" + min_y + ", " + max_y + ")" + '</div');
-	var c_x = (width - 2 * rayon) / (max_x - min_x);
-	var c_y = (height - 2 * rayon) / (max_y - min_y);
+	var c_x = (width - 2 * (rayon + 1)) / (max_x - min_x);
+	var c_y = (height - 2 * (rayon + 1)) / (max_y - min_y);
 	for(var id in graphe)
 	{
 		var n = graphe[id];
-		n["pos_x"] = (n["pos_x"] - min_x) * c_x + rayon;
-		n["pos_y"] = (n["pos_y"] - min_y) * c_y + rayon;
+		n["pos_x"] = (n["pos_x"] - min_x) * c_x + rayon + 1;
+		n["pos_y"] = (n["pos_y"] - min_y) * c_y + rayon + 1;
 //		$('#test').append('<div>' + "(" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div');
 	}
 
