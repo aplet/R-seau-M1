@@ -187,7 +187,7 @@ window.fbAsyncInit = function() {
 //	function normalize()
 //	{
 
-	var min_x = 1000, max_x = 0, min_y = 1000, max_y = 0;
+	var min_x = 1000000, max_x = -1000000, min_y = 1000000, max_y = -1000000;
 	for(var id in graphe)
 	{
 		var n = graphe[id];
