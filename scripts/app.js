@@ -143,8 +143,8 @@ window.fbAsyncInit = function() {
 						delta_y = n1["pos_y"] - graphe[id2]["pos_y"];
 						distance = Math.max(1, Math.sqrt(delta_x * delta_x + delta_y * delta_y));
 						force = alpha / (distance * distance * distance);
-						n1["acc_x"] += force * delta_x;
-						n1["acc_y"] += force * delta_y;
+						n1["acc_x"] += force * (1 + delta_x);
+						n1["acc_y"] += force * (1 + delta_y);
 					}
 				}
 			}
