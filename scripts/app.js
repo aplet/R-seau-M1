@@ -171,7 +171,7 @@ window.fbAsyncInit = function() {
 				}
 					n1["pos_x"] += n1["vit_x"] * delta_t;
 					n1["pos_y"] += n1["vit_y"] * delta_t;
-					if(n1["pos_x"] < (rayon + 1))
+/*					if(n1["pos_x"] < (rayon + 1))
 						n1["pos_x"] = rayon + 1;
 					if(n1["pos_x"] > (width - (rayon + 1)))
 						n1["pos_x"] = width - (rayon + 1);
@@ -179,7 +179,7 @@ window.fbAsyncInit = function() {
 						n1["pos_y"] = rayon + 1;
 					if(n1["pos_y"] > (height - (rayon + 1)))
 						n1["pos_y"] = height - (rayon + 1);
-					modifie = 1;
+*/					modifie = 1;
 			}
 		}
 //	}
