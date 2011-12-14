@@ -210,7 +210,7 @@ window.fbAsyncInit = function() {
 //			$('#friends').append('<div>' + id + " --> (" + graphe[id]["pos_x"] + ", " + graphe[id]["pos_y"] + ")\n" + '</div>');
 		}
 
-//		}
+		}
 		);
 
 		}
