@@ -61,12 +61,15 @@ $(
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
-			
+
+			this.attr({fill: "red"});
+			/*
 			var v = monGraphe[this.id]["voisins"];
 			for(var id2 in v)
 			{
 			    v[id2].attr({fill: "red"});
 			}
+			*/
 		    }
 		);
 	    }
