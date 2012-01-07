@@ -17,6 +17,7 @@ $(
 
 	    var Noeud = function(){
 		this.nom = "";
+		this.image = "";
 		this.degre = 0;
 		this.rond = 0;
 		this.pos_x = 0;
@@ -84,7 +85,9 @@ $(
 			{
 			    var id = response[it];
 			    monGraphe[id["uid"]] = new Noeud();
-			    (monGraphe[id["uid"]]).nom = id["name"];
+			    var n = monGraphe[id["uid"]];
+			    n.nom = id["name"];
+			    n.image = "http://graph.facebook.com/"+ id[""] + id[""] +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
@@ -109,10 +112,13 @@ $(
 			    var r1 = r["uid1"];
 			    var r2 = r["uid2"];
 			    //$('#test').append('<div>' + r1 + " <--> " + r2 + '</div>');
-			    (monGraphe[r1].voisins)[r2] = r2;
-			    monGraphe[r1].degre = monGraphe[r1].degre + 1;
-			    (monGraphe[r2].voisins)[r1] = r2;
-			    monGraphe[r2].degre = monGraphe[r2].degre + 1;
+			    if(r1 != r2)
+			    {
+				(monGraphe[r1].voisins)[r2] = r2;
+				monGraphe[r1].degre = monGraphe[r1].degre + 1;
+				(monGraphe[r2].voisins)[r1] = r2;
+				monGraphe[r2].degre = monGraphe[r2].degre + 1;
+			    }
 			}
 			
 			Positionne(nb_amis);
@@ -148,7 +154,7 @@ $(
 		var delta_t = 0.05;
 		var alpha = 100, k = 0.5;
 		var min_dist = 2;
-		var maxDistRep = 200;
+		var maxDistRep = 400;
 		var limite = 0;
 		
 		var id1, id2, delta_x, delta_y, distance, force;
@@ -289,6 +295,10 @@ $(
 		    n.rond = c;
 		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")\n" + '</div>');
 		}
+	    }
+
+	    function DetecteCommunautes(k)
+	    {
 	    }
 	    
 	    var session_handle = function(response){
