@@ -83,8 +83,8 @@ $(
 		var v = n["voisins"];
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({fill: "blue"});
-		    monGraphe[id2]["rond"].attr({fill: "black"});
+		    (v[id2]).attr({fill: "black"});
+		    monGraphe[id2]["rond"].attr({fill: "blue"});
 		}
 	    }
 	    
