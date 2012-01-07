@@ -58,9 +58,10 @@ $(
 			for(var it in response)
 			{
 			    //$('#image').src = "http://graph.facebook.com/"+ response[it]["name"] +"/picture";
-			    $('#cible').append('<div class="name">' + response[it]["name"] + "\n" + response[it]["uid"] + '</div>');
+			    $('#cible').append('<div class="name">' + response[it]["name"] + '</div>');
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
+			    this.attr({fill: "red"});
 			}
 x
 			//this.attr({fill: "red"});
