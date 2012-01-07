@@ -58,7 +58,7 @@ $(
 			for(var it in response)
 			{
 			    //$('#image').src = "http://graph.facebook.com/"+ response[it]["name"] +"/picture";
-			    $('#cible').append('<div class="name">' + response[it]["name"] + "\n" + monGraphe["length"] + '</div>');
+			    $('#cible').append('<div class="name">' + response[it]["name"] + "\n" + this.id + '</div>');
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
@@ -97,7 +97,7 @@ $(
 			for(var i in response)
 			{
 			    monGraphe[response[i]["uid2"]] = new Noeud();
-			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
+			    $('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
 			ConstruitAretes(nb_amis);
