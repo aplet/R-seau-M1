@@ -35,7 +35,8 @@ $(
 		var n = monGraphe[this.id];
 		$("div").remove(".name");
 		//$('#image').src = "http://graph.facebook.com/"+ this.id +"/picture";
-		$('#cible').append('<div class="name">' + n.nom + "\n" + n.degre + " amis en commun" + '</div>');
+		$('#cible').append('<div class="name">' + n.nom + '</div>');
+		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		var v = n.voisins;
 		for(var id2 in v)
 		{
@@ -147,7 +148,7 @@ $(
 		var delta_t = 0.05;
 		var alpha = 100, k = 0.5;
 		var min_dist = 2;
-		var maxDistRep = 60;
+		var maxDistRep = 200;
 		var limite = 0;
 		
 		var id1, id2, delta_x, delta_y, distance, force;
