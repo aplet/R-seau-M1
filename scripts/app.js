@@ -16,6 +16,7 @@ $(
 	    var epaisseur = 1;
 
 	    var Noeud = function(){
+		this.rond = 0;
 		this.pos_x = 0;
 		this.pos_y = 0;
 		this.vit_x = 0;
@@ -286,7 +287,7 @@ $(
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
-		    canvas.circle(n["pos_x"], n["pos_y"], rayon)
+		    n["rond"] = canvas.circle(n["pos_x"], n["pos_y"], rayon)
 			.attr({fill: "blue"})
 			.mouseover(affichage)
 			.id = id;
