@@ -303,7 +303,7 @@ $(
 		    var c = canvas.circle(n["pos_x"], n["pos_y"], rayon);
 		    c.attr({fill: "blue"})
 			.mouseover(affichage)
-			.unmouseover(desaffichage)
+			.mouseout(desaffichage)
 			.id = id;
 		    n.rond = c;
 		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")\n" + '</div>');
