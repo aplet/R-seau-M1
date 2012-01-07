@@ -29,49 +29,22 @@ $(
 	    }
 	    
 	    var monGraphe = new Array();
-	    /*
-	      FB.api(
-	      {
-	      method: 'fql.query',
-	      query: 'SELECT name, pic_small, birthday FROM user WHERE uid=me()'
-	      },
-	      function(response) {
-	      for(var it in response)
-	      {
-	      //			$('#cible').append('<img src = #(response[it]["pic_small"]) />');
-	      $('#cible').append('<div>' + "Name : " + response[it]["name"] + '</div>');
-	      if(response[it]["birthday"])
-	      $('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
-	      }
-	      }
-	      );
-	    */
-	    //$('#cible').innerHtml = '';
 	    
 	    var affichage = function()
 	    {
-/*
-		FB.api(
-		    {
-			method: 'fql.query',
-			query: 'SELECT name, pic_small, birthday, uid FROM user WHERE uid=' + this.id
-		    },
-		    function(response) {
-*/		var n = monGraphe[this.id];
+		var n = monGraphe[this.id];
 		$("div").remove(".name");
 		//$('#image').src = "http://graph.facebook.com/"+ this.id +"/picture";
-		$('#cible').append('<div class="name">' + n.nom + '</div>');
-		n.rond.attr({fill: "green"});
+		$('#cible').append('<div class="name">' + n.nom + "\n" + n.degre + " amis en commun" + '</div>');
 		var v = n.voisins;
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({stroke: "yellow"});
-		    monGraphe[id2].rond.attr({fill: "red"});
+		    (v[id2]).attr({stroke: "green"});
+		    monGraphe[id2].rond.attr({fill: "green"})
+			.toFront();
 		}
-/*
-  }
-  );
-*/
+		n.rond.attr({fill: "red"})
+		    .toFront();
 	    }
 
 	    var desaffichage = function()
@@ -110,7 +83,7 @@ $(
 			{
 			    var id = response[it];
 			    monGraphe[id["uid"]] = new Noeud();
-			    (monGraphe[id["uid"]]).name = id["name"];
+			    (monGraphe[id["uid"]]).nom = id["name"];
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
@@ -174,6 +147,7 @@ $(
 		var delta_t = 0.05;
 		var alpha = 100, k = 0.5;
 		var min_dist = 2;
+		var maxDistRep = 60;
 		var limite = 0;
 		
 		var id1, id2, delta_x, delta_y, distance, force;
@@ -199,9 +173,12 @@ $(
 				delta_x = n1.pos_x - n2.pos_x;
 				delta_y = n1.pos_y - n2.pos_y;
 				distance = Math.max(0.5, Math.sqrt(delta_x * delta_x + delta_y * delta_y));
-				force = alpha / (distance * distance);
-				n1.acc_x += force * (1 + delta_x);
-				n1.acc_y += force * (1 + delta_y);
+				if(distance < maxDistRep)
+				{
+				    force = alpha / (distance * distance);
+				    n1.acc_x += force * (1 + delta_x);
+				    n1.acc_y += force * (1 + delta_y);
+				}
 			    }
 			}
 			
