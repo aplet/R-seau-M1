@@ -62,7 +62,7 @@ $(
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
 			
-			var v = graphe[id]["voisins"];
+			var v = graphe[this.id]["voisins"];
 			for(var id2 in v)
 			{
 			    v[id2].attr({fill: "red"});
