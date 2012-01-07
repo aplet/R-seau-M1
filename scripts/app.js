@@ -58,7 +58,7 @@ $(
 			for(var it in response)
 			{
 			    var p = response[it];
-			    $('#image').src = "http://graph.facebook.com/"+ response[it]["uid"] +"/picture";
+			    //$('#image').src = "http://graph.facebook.com/"+ response[it]["uid"] +"/picture";
 			    $('#cible').append('<div class="name">' + p["name"] + '</div>');
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
@@ -73,6 +73,19 @@ $(
 			}
 		    }
 		);
+	    }
+
+	    var desaffichage = function()
+	    {
+		$("div").remove(".name");
+		var n = monGraphe[this.id];
+		(n["rond"]).attr({fill: "blue"});
+		var v = n["voisins"];
+		for(var id2 in v)
+		{
+		    (v[id2]).attr({fill: "blue"});
+		    monGraphe[id2]["rond"].attr({fill: "black"});
+		}
 	    }
 	    
 	    function FaitTout()
@@ -92,12 +105,12 @@ $(
 		    },
 		    function(response) {
 			nb_amis = response["length"];
-			//$('#friends').append('<div>' + nb_amis + " amis\n" + '</div>');
+			$('#friends').append('<div>' + nb_amis + " amis\n" + '</div>');
 			// Création d'un noeud pour chaque amis
 			for(var i in response)
 			{
 			    monGraphe[response[i]["uid2"]] = new Noeud();
-			    $('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
+			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
 			ConstruitAretes(nb_amis);
@@ -290,6 +303,7 @@ $(
 		    var c = canvas.circle(n["pos_x"], n["pos_y"], rayon);
 		    c.attr({fill: "blue"})
 			.mouseover(affichage)
+			.unmouseover(desaffichage)
 			.id = id;
 		    n.rond = c;
 		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")\n" + '</div>');
