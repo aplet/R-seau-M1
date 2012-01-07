@@ -104,7 +104,7 @@ $(
 			// Création d'une arête pour chaque paire d'amis
 			for(var i in response)
 			{
-			    var r = respons[i];
+			    var r = response[i];
 			    var r1 = r["uid1"];
 			    var r2 = r["uid2"];
 			    //$('#test').append('<div>' + r1 + " <--> " + r2 + '</div>');
