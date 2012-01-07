@@ -72,6 +72,8 @@ $(
 
 	    function ConstruitNoeuds(monGraphe)
 	    {
+		var nb_amis;
+
 		// Recherche des amis et création des noeuds
 		FB.api(
 		    {
@@ -79,7 +81,8 @@ $(
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1=me()'
 		    },
 		    function(response) {
-			$('#friends').append('<div>' + response["length"] + " amis\n" + '</div>');
+			nb_amis = response["length"];
+			$('#friends').append('<div>' + nb_amis + " amis\n" + '</div>');
 			// Création d'un noeud pour chaque amis
 			for(var i in response)
 			{
@@ -87,12 +90,12 @@ $(
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
-			ConstruitAretes(monGraphe);
+			ConstruitAretes(monGraphe, nb_amis);
 		    }
 		);
 	    }
 
-	    function ConstruitAretes(monGraphe)
+	    function ConstruitAretes(monGraphe, nb_amis)
 	    {
 		FB.api(
 		    {
@@ -112,16 +115,16 @@ $(
 			    (monGraphe[r2]["voisins"])[r1] = r2;
 			}
 			
-			Positionne(monGraphe);
+			Positionne(monGraphe, nb_amis);
 		    }
 		);
 	    }
 
-	    function Positionne(monGraphe)
+	    function Positionne(monGraphe, nb_amis)
 	    {
 		// Initialisation des positions (sur une grille)
 		var i = 0, j = 0;
-		var borne = Math.sqrt(monGraphe["length"]);
+		var borne = Math.sqrt(nb_amis);
 		$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
 		for(var id in monGraphe)
 		{
