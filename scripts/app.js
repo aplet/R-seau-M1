@@ -63,11 +63,12 @@ $(
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			    var n = monGraphe[p["uid"]];
-			    (n["rond"]).attr({fill: "red"});
+			    (n["rond"]).attr({fill: "green"});
 			    var v = n["voisins"];
 			    for(var id2 in v)
 			    {
-				(v[id2]).attr({fill: "green"});
+				(v[id2]).attr({fill: "red"});
+				monGraphe[id2]["rond"].attr({fill: "yellow"});
 			    }
 			}
 		    }
@@ -286,10 +287,11 @@ $(
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
-		    n["rond"] = canvas.circle(n["pos_x"], n["pos_y"], rayon);
-		    n["rond"].attr({fill: "blue"});
-		    n["rond"].mouseover(affichage);
-		    n["rond"].id = id;
+		    var c = canvas.circle(n["pos_x"], n["pos_y"], rayon);
+		    c.attr({fill: "blue"})
+			.mouseover(affichage)
+			.id = id;
+		    n.rond = c;
 		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")\n" + '</div>');
 		}
 	    }
