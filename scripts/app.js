@@ -25,6 +25,7 @@ $(
 		this.voisins = new Array()
 	    }
 	    
+	    var graphe = new Array();
 	    /*
 	      FB.api(
 	      {
@@ -60,14 +61,19 @@ $(
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
+			
+			var v = graphe[id]["voisins"];
+			for(var id2 in v)
+			{
+			    v[id2].attr({fill: "red"});
+			}
 		    }
 		);
 	    }
 	    
 	    function FaitTout()
 	    {
-		var monGraphe = new Array();
-		ConstruitNoeuds(monGraphe);
+		ConstruitNoeuds(graphe);
 	    }
 
 	    function ConstruitNoeuds(monGraphe)
@@ -125,7 +131,7 @@ $(
 		// Initialisation des positions (sur une grille)
 		var i = 0, j = 0;
 		var borne = Math.sqrt(nb_amis);
-		$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
+		//$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
@@ -263,11 +269,13 @@ $(
 		//dessin des arêtes
 		for(var id1 in monGraphe)
 		{
-		    for(var id2 in monGraphe[id1]["voisins"])
+		    var n1 = monGraphe[id1];
+		    var v1 = n1["voisins"];
+		    for(var id2 in v1)
 		    {
-			var n1 = monGraphe[id1];
 			var n2 = monGraphe[id2];
-			canvas.path("M " + n1["pos_x"] + " " + n1["pos_y"] + " L " + n2["pos_x"] + " " + n2["pos_y"]);
+			v1[id2] = canvas.path("M " + n1["pos_x"] + " " + n1["pos_y"] + " L " + n2["pos_x"] + " " + n2["pos_y"]);
+			n2["voisins"][id1] = v1[id2];
 		    }
 		}
 		
@@ -288,17 +296,7 @@ $(
 		$('#login').hide();
 		
 		FaitTout();
-/*
-		FB.api('/me/friends', function(response_list){
-        response_list.data.forEach(function(friend){
-          $('#test').append('<div>'+friend.id+" a pour amis : "+'</div>');
-          friends.getMutualFriends(response.id, friend.id).forEach(function(mFriend){
-            $('#test').append('<div>'+JSON.stringify(mFriend)+'</div>');
-		});
-          $('#friends').append('<div>'+JSON.stringify(friend)+'</div>');
-        });
-      });
-*/
+
 		FB.XFBML.parse();
 	    };
 	    FB.Event.subscribe('auth.sessionChange', session_handle);
