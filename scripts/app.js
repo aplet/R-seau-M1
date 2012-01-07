@@ -139,8 +139,7 @@ $(
 		    }
 		}
 		
-		Normalise(monGraphe);
-		//Stabilise(monGraphe);
+		Stabilise(monGraphe);
 	    }
 	    
 	    function Stabilise(monGraphe)
