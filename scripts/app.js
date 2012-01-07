@@ -122,7 +122,7 @@ $(
 		// Initialisation des positions (sur une grille)
 		var i = 0, j = 0;
 		var borne = Math.sqrt(monGraphe["length"]);
-		//$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
+		$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
