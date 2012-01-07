@@ -65,8 +65,8 @@ $(
 		var v = n.voisins;
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({fill: "red"});
-		    monGraphe[id2].rond.attr({fill: "yellow"});
+		    (v[id2]).attr({stroke: "yellow"});
+		    monGraphe[id2].rond.attr({fill: "red"});
 		}
 /*
   }
@@ -82,7 +82,7 @@ $(
 		var v = n.voisins;
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({fill: "black"});
+		    (v[id2]).attr({stroke: "black"});
 		    monGraphe[id2].rond.attr({fill: "blue"});
 		}
 	    }
