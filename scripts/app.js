@@ -51,18 +51,18 @@ $(
 		FB.api(
 		    {
 			method: 'fql.query',
-			query: 'SELECT name, pic_small, birthday FROM user WHERE uid=' + this.id
+			query: 'SELECT name, pic_small, birthday, uid FROM user WHERE uid=' + this.id
 		    },
 		    function(response) {
 			$("div").remove(".name");
 			for(var it in response)
 			{
 			    //$('#image').src = "http://graph.facebook.com/"+ response[it]["name"] +"/picture";
-			    $('#cible').append('<div class="name">' + response[it]["name"] + "\n" + this.id + '</div>');
+			    $('#cible').append('<div class="name">' + response[it]["name"] + "\n" + uid + '</div>');
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
-
+x
 			//this.attr({fill: "red"});
 			/*
 			var v = monGraphe[this.id]["voisins"];
