@@ -57,21 +57,19 @@ $(
 			$("div").remove(".name");
 			for(var it in response)
 			{
+			    var p = response[it];
 			    //$('#image').src = "http://graph.facebook.com/"+ response[it]["name"] +"/picture";
-			    $('#cible').append('<div class="name">' + response[it]["name"] + '</div>');
+			    $('#cible').append('<div class="name">' + p["name"] + '</div>');
 			    //if(response[it]["birthday"])
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
-			    this.attr({fill: "red"});
+			    var n = monGraphe[p["uid"]];
+			    n["rond"].attr({fill: "red"});
+			    var v = n["voisins"];
+			    for(var id2 in v)
+			    {
+				v[id2].attr({fill: "green"});
+			    }
 			}
-x
-			//this.attr({fill: "red"});
-			/*
-			var v = monGraphe[this.id]["voisins"];
-			for(var id2 in v)
-			{
-			    v[id2].attr({fill: "red"});
-			}
-			*/
 		    }
 		);
 	    }
