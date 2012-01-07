@@ -25,7 +25,7 @@ $(
 		this.voisins = new Array()
 	    }
 	    
-	    var graphe = new Array();
+	    var monGraphe = new Array();
 	    /*
 	      FB.api(
 	      {
@@ -62,7 +62,7 @@ $(
 				//$('#cible').append('<div>' + "Birthday : " + response[it]["birthday"] + '</div>');
 			}
 			
-			var v = graphe[this.id]["voisins"];
+			var v = monGraphe[this.id]["voisins"];
 			for(var id2 in v)
 			{
 			    v[id2].attr({fill: "red"});
@@ -73,10 +73,10 @@ $(
 	    
 	    function FaitTout()
 	    {
-		ConstruitNoeuds(graphe);
+		ConstruitNoeuds();
 	    }
 
-	    function ConstruitNoeuds(monGraphe)
+	    function ConstruitNoeuds()
 	    {
 		var nb_amis;
 
@@ -96,12 +96,12 @@ $(
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
-			ConstruitAretes(monGraphe, nb_amis);
+			ConstruitAretes(nb_amis);
 		    }
 		);
 	    }
 
-	    function ConstruitAretes(monGraphe, nb_amis)
+	    function ConstruitAretes(nb_amis)
 	    {
 		FB.api(
 		    {
@@ -121,12 +121,12 @@ $(
 			    (monGraphe[r2]["voisins"])[r1] = r2;
 			}
 			
-			Positionne(monGraphe, nb_amis);
+			Positionne(nb_amis);
 		    }
 		);
 	    }
 
-	    function Positionne(monGraphe, nb_amis)
+	    function Positionne(nb_amis)
 	    {
 		// Initialisation des positions (sur une grille)
 		var i = 0, j = 0;
@@ -145,10 +145,10 @@ $(
 		    }
 		}
 		
-		Stabilise(monGraphe);
+		Stabilise();
 	    }
 	    
-	    function Stabilise(monGraphe)
+	    function Stabilise()
 	    {
 		// Paramètres de la stabilisation
 		var delta_t = 0.05;
@@ -226,10 +226,10 @@ $(
 			}
 		    }
 		}
-		Normalise(monGraphe);
+		Normalise();
 	    }
 
-	    function Normalise(monGraphe)
+	    function Normalise()
 	    {
 		var min_x = 1000000, max_x = -1000000, min_y = 1000000, max_y = -1000000;
 		// Recherche des extrema
@@ -258,10 +258,10 @@ $(
 		    n["pos_y"] = (n["pos_y"] - min_y) * c_y + rayon + 1;
 		    //$('#test').append('<div>' + "(" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div');
 		}
-		Dessine(monGraphe);
+		Dessine();
 	    }
 
-	    function Dessine(monGraphe)
+	    function Dessine()
 	    {
 		//$('#test').append('<div>' + monGraphe["length"] + " amis ?\n" + '</div>');
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
