@@ -426,19 +426,19 @@ $(
 
 	    function ColorieCommunautes()
 	    {
-		var pas = parseInt(8000000 / nb_comms);
+		var pas = parseInt(8000000 / (nb_comms + 1));
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
 		    var c = n.communautes;
 		    if(c.length == 1)
 		    {
-			var couleur = pas * c[0];
-			var b = pas % 200;
-			pas = parseInt(pas / 200);
-			var g = pas % 200;
-			pas = parseInt(pas / 200);
-			var r = pas % 200;
+			var couleur = pas * (c[0] + 1);
+			var b = 25 + couleur % 200;
+			couleur = parseInt(couleur / 200);
+			var g = 25 + couleur % 200;
+			couleur = parseInt(couleur / 200);
+			var r = 25 + couleur % 200;
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
 
