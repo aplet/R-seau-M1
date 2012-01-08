@@ -48,7 +48,12 @@ $(
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		//$('#cible').append('<div class="name">' + n.image + '</div>');
-		var v = n.voisins;
+/*		var co = n.communautes;
+		for(var it in co)
+		{
+		    $('#cible').append('<div class="name">' + co[it] + '</div>');
+		}
+*/		var v = n.voisins;
 		for(var id2 in v)
 		{
 		    (v[id2]).attr({stroke: "green"});
@@ -500,6 +505,21 @@ $(
 			var r = pas % 200;
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
+		    }
+		}
+
+		AfficheCommunautes();
+	    }
+
+	    function AfficheCommunautes()
+	    {
+		for(var it in mesComms)
+		{
+		    $('#test').append('<div>' + "Communauté " + it + '</div>');
+		    var c = mesComms[it];
+		    for(var id in c)
+		    {
+			$('#test').append('<div>' + monGraphe[id].nom + '</div>');
 		    }
 		}
 	    }
