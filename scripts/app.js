@@ -38,6 +38,7 @@ $(
 		$('#image').src = n.image;
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
+		$('#cible').append('<div class="name">' + n.image + '</div>');
 		var v = n.voisins;
 		for(var id2 in v)
 		{
