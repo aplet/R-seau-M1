@@ -16,9 +16,11 @@
 <body>
   <div id="fb-root"></div>
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
-	<div id="canvas_container"></div>
-	<img id=image src=""></img>
-	<div class=cible_t id="cible"></div>
+  <div id="canvas_container"></div>
+  <p>
+    <img id=image src="">
+  </p>
+  <div class=cible_t id="cible"></div>
   
   <pre id="friends"></pre>
   <pre id="test"></pre>
