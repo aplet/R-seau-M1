@@ -114,10 +114,16 @@ $(
 			    //$('#test').append('<div>' + r1 + " <--> " + r2 + '</div>');
 			    if(r1 != r2)
 			    {
-				(monGraphe[r1].voisins)[r2] = r2;
-				monGraphe[r1].degre = monGraphe[r1].degre + 1;
-				//(monGraphe[r2].voisins)[r1] = r2;
-				//monGraphe[r2].degre = monGraphe[r2].degre + 1;
+				if(!monGraphe[r1].voisins[r2])
+				{
+				    (monGraphe[r1].voisins)[r2] = r2;
+				    monGraphe[r1].degre = monGraphe[r1].degre + 1;
+				}
+				if(!monGraphe[r2].voisins[r1])
+				{
+				    (monGraphe[r2].voisins)[r1] = r2;
+				    monGraphe[r2].degre = monGraphe[r2].degre + 1;
+				}
 			    }
 			}
 			
