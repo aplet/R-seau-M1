@@ -426,8 +426,8 @@ $(
 
 	    function ColorieCommunautes()
 	    {
-		var pr = 13;
-		var pg = 23;
+		var pr = 103;
+		var pg = 47;
 		var pb = 7;
 		for(var id in monGraphe)
 		{
