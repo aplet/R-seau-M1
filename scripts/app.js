@@ -340,7 +340,6 @@ $(
 		    var enComm = 0;
 		    for(var id2 in v1) // Parcours des aretes
 		    {
-			nb_voisins++;
 			if(id1 < id2)
 			{
 			    var dejaEnComm = 0;
