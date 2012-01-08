@@ -44,8 +44,7 @@ $(
 	    {
 		var n = monGraphe[this.id];
 		$("div").remove(".name");
-		//document.getElementById('image').src = n.image;
-		$('#image').src = n.image;
+		document.getElementById("image").src = n.image;
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		//$('#cible').append('<div class="name">' + n.image + '</div>');
