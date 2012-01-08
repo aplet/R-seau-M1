@@ -19,13 +19,17 @@ $(
 		this.nom = "";
 		this.image = "";
 		this.degre = 0;
+
 		this.rond = 0;
+		this.couleur = "";
+
 		this.pos_x = 0;
 		this.pos_y = 0;
 		this.vit_x = 0;
 		this.vit_y = 0;
 		this.acc_x = 0;
 		this.acc_y = 0;
+
 		this.voisins = new Array()
 	    }
 	    
@@ -54,12 +58,13 @@ $(
 	    {
 		$("div").remove(".name");
 		var n = monGraphe[this.id];
-		n.rond.attr({fill: "blue"});
+		n.rond.attr({fill: n.couleur});
 		var v = n.voisins;
 		for(var id2 in v)
 		{
 		    (v[id2]).attr({stroke: "black"});
-		    monGraphe[id2].rond.attr({fill: "blue"});
+		    var n2 = monGraphe[id2];
+		    n2.rond.attr({fill: n2.couleur});
 		}
 	    }
 	    
@@ -87,6 +92,7 @@ $(
 			    var id = response[it];
 			    monGraphe[id["uid"]] = new Noeud();
 			    var n = monGraphe[id["uid"]];
+			    n.couleur = "blue";
 			    n.nom = id["name"];
 			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
