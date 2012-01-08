@@ -88,7 +88,7 @@ $(
 			    monGraphe[id["uid"]] = new Noeud();
 			    var n = monGraphe[id["uid"]];
 			    n.nom = id["name"];
-			    n.image = "http://graph.facebook.com/"+ n.nom +"/picture";
+			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
