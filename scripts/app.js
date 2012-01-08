@@ -48,7 +48,7 @@ $(
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		//$('#cible').append('<div class="name">' + n.image + '</div>');
-		$('#cible').append('<div class="name">' + n.couleur + '</div>');
+		//$('#cible').append('<div class="name">' + n.couleur + '</div>');
 /*		var co = n.communautes;
 		for(var it in co)
 		{
@@ -442,7 +442,7 @@ $(
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
 
-			$('#test').append('<div>' + n.nom + " --> " + c[0] + '</div>');
+			//$('#test').append('<div>' + n.nom + " --> " + c[0] + '</div>');
 		    }
 		}
 
