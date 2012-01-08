@@ -15,7 +15,8 @@ $(
 	    var rayon = 5;
 	    var epaisseur = 1;
 
-	    var Noeud = function(){
+	    var Noeud = function()
+	    {
 		this.nom = "";
 		this.image = "";
 		this.degre = 0;
@@ -46,11 +47,11 @@ $(
 		var v = n.voisins;
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({stroke: "rgb(0, 255, 0)"});
+		    (v[id2]).attr({stroke: "green"});
 		    monGraphe[id2].rond.attr({fill: "green"})
 			.toFront();
 		}
-		n.rond.attr({fill: "rgb(255, 0, 0)"})
+		n.rond.attr({fill: "red"})
 		    .toFront();
 	    }
 
@@ -92,7 +93,7 @@ $(
 			    var id = response[it];
 			    monGraphe[id["uid"]] = new Noeud();
 			    var n = monGraphe[id["uid"]];
-			    n.couleur = "rgb(0, 0, 255)";
+			    n.couleur = "blue";
 			    n.nom = id["name"];
 			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
@@ -290,9 +291,12 @@ $(
 		    var v1 = n1.voisins;
 		    for(var id2 in v1)
 		    {
-			var n2 = monGraphe[id2];
-			v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
-			n2.voisins[id1] = v1[id2];
+			if(id1 < id2)
+			{
+			    var n2 = monGraphe[id2];
+			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
+			    n2.voisins[id1] = v1[id2];
+			}
 		    }
 		}
 		
