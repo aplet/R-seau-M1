@@ -480,6 +480,27 @@ $(
 		
 		$('#friends').append('<div>' + nb_comms + " communautés" + '</div>');
 
+		ColorieCommunautes();
+	    }
+
+	    function ColorieCommunautes()
+	    {
+		var pas = 8000000 / nb_comms;
+		for(var id in monGraphe)
+		{
+		    var n = monGraphe[id];
+		    var c = n.communautes;
+		    if(c.length > 1)
+		    {
+			var couleur = pas * c[0];
+			var b = pas % 200;
+			pas = parseInt(pas / 200);
+			var g = pas % 200;
+			pas = parseInt(pas / 200);
+			var r = pas % 200;
+			n.couleur = "rgb("+r+", "+g+", "+b+")";
+		    }
+		}
 	    }
 /*
 	    function DeplaceComm(comm, newComm)
