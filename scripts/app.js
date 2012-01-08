@@ -34,10 +34,10 @@ $(
 		this.voisins = new Array()
 	    }
 
-	    var Arc = function(n1, n2)
+	    var Arc = function(uid1, uid2)
 	    {
-		this.n1 = n1;
-		this.n2 = n2;
+		this.uid1 = uid1;
+		this.uid2 = uid2;
 	    }
 	    
 	    var monGraphe = new Array();
@@ -308,7 +308,7 @@ $(
 			    nb_comms = nb_comms + 1;
 			    n2.voisins[id1] = v1[id2];
 			    aretes[nb_comms - 1] = new Array();
-			    aretes[nb_comms - 1][0] = new Arc(n1, n2);
+			    aretes[nb_comms - 1][0] = new Arc(id1, id2);
 			}
 		    }
 		}
@@ -372,9 +372,9 @@ $(
 					for(var it in a)
 					{
 					    var arete = a[it];
-					    var n1 = arete.n1;
-					    var n2 = arete.n2;
-					    monGraphe[n1].voisins[n2].id = c;
+					    var uid1 = arete.uid1;
+					    var uid2 = arete.uid2;
+					    monGraphe[uid1].voisins[uid2].id = c;
 					    na[l] = arete;
 					    l = l + 1;
 					}
@@ -389,9 +389,9 @@ $(
 					for(var it in a)
 					{
 					    var arete = a[it];
-					    var n1 = arete.n1;
-					    var n2 = arete.n2;
-					    monGraphe[n1].voisins[n2].id = c;
+					    var uid1 = arete.uid1;
+					    var uid2 = arete.uid2;
+					    monGraphe[uid1].voisins[uid2].id = c;
 					    na[l] = arete;
 					    l = l + 1;
 					}
@@ -406,9 +406,9 @@ $(
 					for(var it in a)
 					{
 					    var arete = a[it];
-					    var n1 = arete.n1;
-					    var n2 = arete.n2;
-					    monGraphe[n1].voisins[n2].id = c;
+					    var uid1 = arete.uid1;
+					    var uid2 = arete.uid2;
+					    monGraphe[uid1].voisins[uid2].id = c;
 					    na[l] = arete;
 					    l = l + 1;
 					}
@@ -433,9 +433,9 @@ $(
 		    for(var it in a)
 		    {
 			var arete = a[it];
-			var n1 = arete.n1;
-			var n2 = arete.n2;
-			monGraphe[n1].voisins[n2].id = newComm;
+			var uid1 = arete.uid1;
+			var uid2 = arete.uid2;
+			monGraphe[uid1].voisins[uid2].id = newComm;
 			na[l] = arete;
 			l = l + 1;
 		    }
