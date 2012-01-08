@@ -33,9 +33,18 @@ $(
 
 		this.voisins = new Array()
 	    }
+
+	    var Arc = function(n1, n2)
+	    {
+		this.n1 = n1;
+		this.n2 = n2;
+	    }
 	    
 	    var monGraphe = new Array();
-	    
+
+	    var aretes = new Array();
+	    var nb_comms = 0;
+
 	    var affichage = function()
 	    {
 		var n = monGraphe[this.id];
@@ -86,7 +95,7 @@ $(
 		    },
 		    function(response) {
 			nb_amis = response["length"];
-			$('#friends').append('<div>' + nb_amis + " amis\n" + '</div>');
+			$('#friends').append('<div>' + nb_amis + " amis" + '</div>');
 			// Création d'un noeud pour chaque amis
 			for(var it in response)
 			{
@@ -112,7 +121,7 @@ $(
 			query: 'SELECT uid1, uid2 FROM friend WHERE uid1 IN (SELECT uid2 FROM friend WHERE uid1=me()) AND uid2 IN (SELECT uid2 FROM friend WHERE uid1=me())'
 		    },
 		    function(response) {
-			//$('#friends').append('<div>' + (response["length"] / 2) + " mutuals\n" + '</div>');
+			//$('#friends').append('<div>' + (response["length"] / 2) + " mutuals" + '</div>');
 			// Création d'une arête pour chaque paire d'amis
 			for(var i in response)
 			{
@@ -145,7 +154,7 @@ $(
 		// Initialisation des positions (sur une grille)
 		var i = 0, j = 0;
 		var borne = Math.sqrt(nb_amis);
-		//$('#friends').append('<div>' + "Borne : "+ borne + "\n" + '</div>');
+		//$('#friends').append('<div>' + "Borne : "+ borne + '</div>');
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
@@ -281,7 +290,7 @@ $(
 
 	    function Dessine()
 	    {
-		//$('#test').append('<div>' + monGraphe["length"] + " amis ?\n" + '</div>');
+		//$('#test').append('<div>' + monGraphe["length"] + " amis ?" + '</div>');
 		var canvas = new Raphael(document.getElementById('canvas_container'), width, height);
 		
 		//dessin des arêtes
@@ -294,11 +303,17 @@ $(
 			if(id1 < id2)
 			{
 			    var n2 = monGraphe[id2];
-			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
+			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y)
+				.id = nb_comms;
+			    nb_coms = nb_comms + 1;
 			    n2.voisins[id1] = v1[id2];
+			    aretes[nb_comms - 1] = new Array();
+			    aretes[nb_comms - 1][0] = new Arc(n1, n2);
 			}
 		    }
 		}
+
+		$('#friends').append('<div>' + nb_comms + " arêtes (" + aretes.length + ")" + '</div>');
 		
 		//dessin des points
 		for(var id in monGraphe)
@@ -310,7 +325,7 @@ $(
 			.mouseout(desaffichage)
 			.id = id;
 		    n.rond = c;
-		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")\n" + '</div>');
+		    //$('#friends').append('<div>' + id + " --> (" + n["pos_x"] + ", " + n["pos_y"] + ")" + '</div>');
 		}
 	    }
 
