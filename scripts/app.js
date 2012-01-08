@@ -403,71 +403,6 @@ $(
 				    nb_comms++;
 				}
 			    }
-
-/*
-			    var v2 = monGraphe[id2].voisins;
-			    for(var id3 in v1)
-			    {
-				if(id2 < id3 && v2[id3]) // On fusionne les communautes
-				{
-				    var c1 = ;
-				    var c2 = v2[id3].id;
-				    var c3 = v1[id3].id;
-				    var c = Math.min(Math.min(c1, c2), c3);
-				    //DeplaceComm(c1, c);
-				    if(c1 != c)
-				    {
-					nb_comms = nb_comms - 1;
-					var a = aretes[c1];
-					var na = aretes[c];
-					var l = na.length;
-					for(var it in a)
-					{
-					    var arete = a[it];
-					    var uid1 = arete.uid1;
-					    var uid2 = arete.uid2;
-					    monGraphe[uid1].voisins[uid2].id = c;
-					    na[l] = arete;
-					    l = l + 1;
-					}
-				    }
-				    //DeplaceComm(c2, c);
-				    if(c2 != c)
-				    {
-					nb_comms = nb_comms - 1;
-					var a = aretes[c2];
-					var na = aretes[c];
-					var l = na.length;
-					for(var it in a)
-					{
-					    var arete = a[it];
-					    var uid1 = arete.uid1;
-					    var uid2 = arete.uid2;
-					    monGraphe[uid1].voisins[uid2].id = c;
-					    na[l] = arete;
-					    l = l + 1;
-					}
-				    }
-				    //DeplaceComm(c3, c);
-				    if(c3 != c)
-				    {
-					nb_comms = nb_comms - 1;
-					var a = aretes[c3];
-					var na = aretes[c];
-					var l = na.length;
-					for(var it in a)
-					{
-					    var arete = a[it];
-					    var uid1 = arete.uid1;
-					    var uid2 = arete.uid2;
-					    monGraphe[uid1].voisins[uid2].id = c;
-					    na[l] = arete;
-					    l = l + 1;
-					}
-				    }
-				}
-			    }
-*/
 			}
 		    }
 		}
@@ -496,7 +431,7 @@ $(
 		{
 		    var n = monGraphe[id];
 		    var c = n.communautes;
-		    if(c.length > 1)
+		    if(c.length == 1)
 		    {
 			var couleur = pas * c[0];
 			var b = pas % 200;
@@ -506,10 +441,12 @@ $(
 			var r = pas % 200;
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
+
+			$('#test').append('<div>' + n.nom + '</div>');
 		    }
 		}
 
-		AfficheCommunautes();
+		//AfficheCommunautes();
 	    }
 
 	    function AfficheCommunautes()
@@ -524,27 +461,7 @@ $(
 		    }
 		}
 	    }
-/*
-	    function DeplaceComm(comm, newComm)
-	    {
-		if(comm != newComm)
-		{
-		    nb_comms = nb_comms - 1;
-		    var a = aretes[comm];
-		    var na = aretes[newComm];
-		    var l = na.length;
-		    for(var it in a)
-		    {
-			var arete = a[it];
-			var uid1 = arete.uid1;
-			var uid2 = arete.uid2;
-			monGraphe[uid1].voisins[uid2].id = newComm;
-			na[l] = arete;
-			l = l + 1;
-		    }
-		}
-	    }	    
-*/
+	    
 	    var session_handle = function(response){
 		if (!response.authResponse) return $('#login').show();
 		$('#login').hide();
