@@ -48,6 +48,7 @@ $(
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		//$('#cible').append('<div class="name">' + n.image + '</div>');
+		$('#cible').append('<div class="name">' + n.couleur + '</div>');
 /*		var co = n.communautes;
 		for(var it in co)
 		{
@@ -342,7 +343,6 @@ $(
 		{
 		    var n1 = monGraphe[id1];
 		    var v1 = n1.voisins;
-		    var enComm = 0;
 		    for(var id2 in v1) // Parcours des aretes
 		    {
 			if(id1 < id2)
@@ -359,11 +359,7 @@ $(
 				}
 			    }
 
-			    if(dejaEnComm == 1)
-			    {
-				enComm = 1;
-			    }
-			    else
+			    if(dejaEnComm == 0)
 			    {
 				var commTmp = new Array();
 				commTmp[id1] = id1;
@@ -397,7 +393,6 @@ $(
 
 				if(tailleComm > 2)
 				{
-				    enComm = 1;
 				    mesComms[nb_comms] = commTmp;
 				    for(var k in commTmp)
 				    {
@@ -475,12 +470,16 @@ $(
 */
 			}
 		    }
-
-		    if(enComm == 0)
+		}
+		
+		for(var id in monGraphe)
+		{
+		    var c = monGraphe[id].communautes;
+		    if(c.length == 0)
 		    {
-			n1.communautes[0] = nb_comms;
+			c[0] = nb_comms;
 			mesComms[nb_comms] = new Array();
-			mesComms[nb_comms][id1] = id1;
+			mesComms[nb_comms][id] = id;
 			nb_comms++;
 		    }
 		}
