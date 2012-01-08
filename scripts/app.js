@@ -104,7 +104,7 @@ $(
 			    var n = monGraphe[id["uid"]];
 			    n.couleur = "blue";
 			    n.nom = id["name"];
-			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture";
+			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture?type=large";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
