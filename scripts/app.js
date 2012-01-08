@@ -46,11 +46,11 @@ $(
 		var v = n.voisins;
 		for(var id2 in v)
 		{
-		    (v[id2]).attr({stroke: "green"});
+		    (v[id2]).attr({stroke: "rgb(0, 255, 0)"});
 		    monGraphe[id2].rond.attr({fill: "green"})
 			.toFront();
 		}
-		n.rond.attr({fill: "red"})
+		n.rond.attr({fill: "rgb(255, 0, 0)"})
 		    .toFront();
 	    }
 
@@ -92,7 +92,7 @@ $(
 			    var id = response[it];
 			    monGraphe[id["uid"]] = new Noeud();
 			    var n = monGraphe[id["uid"]];
-			    n.couleur = "blue";
+			    n.couleur = "rgb(0, 0, 255)";
 			    n.nom = id["name"];
 			    n.image = "http://graph.facebook.com/"+ id["uid"] +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
