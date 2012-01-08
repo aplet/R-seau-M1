@@ -4,8 +4,8 @@
   <title>Check your friends</title>
 	<style>
 <!--
-        #image{position: fixed; left: 810px; top: 50px}
-	.cible_t{position: fixed; left: 815px; top: 10px;}
+        #image{position: fixed; left: 820px; top: 50px}
+	.cible_t{position: fixed; left: 825px; top: 10px;}
 -->
 	</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
