@@ -31,18 +31,13 @@ $(
 		this.acc_x = 0;
 		this.acc_y = 0;
 
-		this.voisins = new Array()
-	    }
-
-	    var Arc = function(uid1, uid2)
-	    {
-		this.uid1 = uid1;
-		this.uid2 = uid2;
+		this.voisins = new Array();
+		this.communautes = new Array();
 	    }
 	    
 	    var monGraphe = new Array();
 
-	    var aretes = new Array();
+	    var mesComms = new Array();
 	    var nb_comms = 0;
 
 	    var affichage = function()
@@ -303,16 +298,9 @@ $(
 			{
 			    var n2 = monGraphe[id2];
 			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
-			    v1[id2].id = nb_comms;
-			    nb_comms = nb_comms + 1;
-			    n2.voisins[id1] = v1[id2];
-			    aretes[nb_comms - 1] = new Array();
-			    aretes[nb_comms - 1][0] = new Arc(id1, id2);
 			}
 		    }
 		}
-
-		$('#friends').append('<div>' + nb_comms + " arêtes (" + aretes.length + ")" + '</div>');
 		
 		//dessin des points
 		for(var id in monGraphe)
@@ -352,12 +340,70 @@ $(
 		    {
 			if(id1 < id2)
 			{
+			    var dejaEnComm = 0;
+			    var c1 = n1.communautes;
+			    var c2 = monGraphe[id2].communautes;
+			    for(var it1 in c1)
+			    {
+				for(var it2 in c2)
+				{
+				    if(it1 == it2)
+					dejaEnComm = 1;
+				}
+			    }
+
+			    if(dejaEnComm == 0)
+			    {
+				var commTmp = new Array();
+				commTmp[id1] = id1;
+				commTmp[id2] = id2;
+				var tailleComm = 2;
+				var modi = 1;
+				while(modi == 1)
+				{
+				    modi = 0;
+				    for(var i in commTmp)
+				    {
+					var vi = monGraphe[i].voisins;
+					for(var j in commTmp)
+					{
+					    if(i < j)
+					    {
+						var vj = monGraphe[j].voisins;
+						for(var k in vi)
+						{
+						    if(!commTmp[k] && vj[k])
+						    {
+							commTmp[k] = k;
+							modi = 1;
+							tailleComm++;
+						    }
+						}
+					    }
+					}
+				    }
+				}
+
+				if(tailleComm > 2)
+				{
+				    mesComms[nb_comms] = commTmp;
+				    for(var k in commTmp)
+				    {
+					var commk = monGraphe[k].communautes;
+					var l = commk.length;
+					commk[l] = nb_comms;
+				    }
+				    nb_comms++;
+				}
+			    }
+
+/*
 			    var v2 = monGraphe[id2].voisins;
 			    for(var id3 in v1)
 			    {
 				if(id2 < id3 && v2[id3]) // On fusionne les communautes
 				{
-				    var c1 = v1[id2].id;
+				    var c1 = ;
 				    var c2 = v2[id3].id;
 				    var c3 = v1[id3].id;
 				    var c = Math.min(Math.min(c1, c2), c3);
@@ -414,11 +460,13 @@ $(
 				    }
 				}
 			    }
+*/
 			}
 		    }
 		}
 		
 		$('#friends').append('<div>' + nb_comms + " communautés" + '</div>');
+
 	    }
 /*
 	    function DeplaceComm(comm, newComm)
