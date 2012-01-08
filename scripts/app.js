@@ -66,7 +66,6 @@ $(
 
 	    var desaffichage = function()
 	    {
-		$("div").remove(".name");
 		var n = monGraphe[this.id];
 		n.rond.attr({fill: n.couleur});
 		var v = n.voisins;
