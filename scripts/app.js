@@ -426,7 +426,7 @@ $(
 
 	    function ColorieCommunautes()
 	    {
-		var pas = parseInt(8000000 / (nb_comms + 1));
+		var pas = 137;
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
