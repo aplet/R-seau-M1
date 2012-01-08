@@ -35,7 +35,7 @@ $(
 	    {
 		var n = monGraphe[this.id];
 		$("div").remove(".name");
-		//$('#image').src = "http://graph.facebook.com/"+ this.id +"/picture";
+		$('#image').src = n.image;
 		$('#cible').append('<div class="name">' + n.nom + '</div>');
 		$('#cible').append('<div class="name">' + n.degre + " amis en commun" + '</div>');
 		var v = n.voisins;
@@ -75,7 +75,7 @@ $(
 		FB.api(
 		    {
 			method: 'fql.query',
-			query: 'SELECT uid, name FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1=me())'
+			query: 'SELECT uid, name, first_name, last_name FROM user WHERE uid in (SELECT uid2 FROM friend WHERE uid1=me())'
 		    },
 		    function(response) {
 			nb_amis = response["length"];
@@ -87,7 +87,7 @@ $(
 			    monGraphe[id["uid"]] = new Noeud();
 			    var n = monGraphe[id["uid"]];
 			    n.nom = id["name"];
-			    n.image = "http://graph.facebook.com/"+ id[""] + id[""] +"/picture";
+			    n.image = "http://graph.facebook.com/"+ n.nom +"/picture";
 			    //$('#test').append('<div>' + response[i]["uid1"] + " --> " + response[i]["uid2"] + '</div>');
 			}
 
