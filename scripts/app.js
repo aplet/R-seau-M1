@@ -427,8 +427,8 @@ $(
 	    function ColorieCommunautes()
 	    {
 		var pr = 103;
-		var pg = 67;
-		var pb = 29;
+		var pg = 47;
+		var pb = 7;
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
@@ -436,9 +436,9 @@ $(
 		    if(c.length == 1)
 		    {
 			var k = c[0];
-			var r = 25 + ((pr * k) % 200);
-			var g = 25 + ((pg * k) % 200);
-			var b = 25 + ((pb * k) % 200);
+			var r = 25 + ((pr * (k + 1)) % 200);
+			var g = 25 + ((pg * (k + 1)) % 200);
+			var b = 25 + ((pb * (k + 1)) % 200);
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
 
