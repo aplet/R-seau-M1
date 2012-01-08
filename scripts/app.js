@@ -426,7 +426,7 @@ $(
 
 	    function ColorieCommunautes()
 	    {
-		var pas = 8000000 / nb_comms;
+		var pas = parseInt(8000000 / nb_comms);
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
@@ -442,7 +442,7 @@ $(
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
 
-			$('#test').append('<div>' + n.nom + '</div>');
+			$('#test').append('<div>' + n.nom + " --> " + c[0] + '</div>');
 		    }
 		}
 
