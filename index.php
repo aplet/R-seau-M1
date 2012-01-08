@@ -19,7 +19,7 @@
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
   <div id="canvas_container"></div>
   <p>
-    <img class=apercu id="image" src="">
+    <img id="image" src="">
   </p>
   <div class=cible_t id="cible"></div>
   
