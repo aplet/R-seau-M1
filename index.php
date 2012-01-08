@@ -4,7 +4,7 @@
   <title>Check your friends</title>
 	<style>
 <!--
-        .image{position: fixed; left: 810px; top: 50px}
+        #image{position: fixed; left: 810px; top: 50px}
 	.cible_t{position: fixed; left: 815px; top: 10px;}
 -->
 	</style>
