@@ -499,6 +499,7 @@ $(
 			pas = parseInt(pas / 200);
 			var r = pas % 200;
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
+			n.rond.attr({fill: n.couleur});
 		    }
 		}
 	    }
