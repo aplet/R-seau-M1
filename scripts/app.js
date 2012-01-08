@@ -426,23 +426,23 @@ $(
 
 	    function ColorieCommunautes()
 	    {
-		var pas = 137;
+		var pr = 13;
+		var pg = 23;
+		var pb = 7;
 		for(var id in monGraphe)
 		{
 		    var n = monGraphe[id];
 		    var c = n.communautes;
 		    if(c.length == 1)
 		    {
-			var couleur = pas * (c[0] + 1);
-			var b = 25 + couleur % 200;
-			couleur = parseInt(couleur / 200);
-			var g = 25 + couleur % 200;
-			couleur = parseInt(couleur / 200);
-			var r = 25 + couleur % 200;
+			var k = c[0];
+			var r = 25 + ((pr * k) % 200);
+			var g = 25 + ((pg * k) % 200);
+			var b = 25 + ((pb * k) % 200);
 			n.couleur = "rgb("+r+", "+g+", "+b+")";
 			n.rond.attr({fill: n.couleur});
 
-			//$('#test').append('<div>' + n.nom + " --> " + c[0] + '</div>');
+			//$('#test').append('<div>' + n.nom + " --> " + k + '</div>');
 		    }
 		}
 
