@@ -305,7 +305,7 @@ $(
 			    var n2 = monGraphe[id2];
 			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y)
 				.id = nb_comms;
-			    nb_coms = nb_comms + 1;
+			    nb_comms = nb_comms + 1;
 			    n2.voisins[id1] = v1[id2];
 			    aretes[nb_comms - 1] = new Array();
 			    aretes[nb_comms - 1][0] = new Arc(n1, n2);
