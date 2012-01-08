@@ -116,8 +116,8 @@ $(
 			    {
 				(monGraphe[r1].voisins)[r2] = r2;
 				monGraphe[r1].degre = monGraphe[r1].degre + 1;
-				(monGraphe[r2].voisins)[r1] = r2;
-				monGraphe[r2].degre = monGraphe[r2].degre + 1;
+				//(monGraphe[r2].voisins)[r1] = r2;
+				//monGraphe[r2].degre = monGraphe[r2].degre + 1;
 			    }
 			}
 			
