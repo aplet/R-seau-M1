@@ -4,7 +4,8 @@
   <title>Check your friends</title>
 	<style>
 <!--
-	.cible_t{position: absolute; top: 10px; left: 850px;}
+        .image{position: fixed; left: 810px; top: 50px}
+	.cible_t{position: fixed; left: 815px; top: 10px;}
 -->
 	</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -18,7 +19,7 @@
   <div id="login"><fb:login-button>Connect with Facebook</fb:login-button></div>
   <div id="canvas_container"></div>
   <p>
-    <img id=image src="">
+    <img class=apercu id="image" src="">
   </p>
   <div class=cible_t id="cible"></div>
   
