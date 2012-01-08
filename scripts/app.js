@@ -480,7 +480,7 @@ $(
 		    {
 			n1.communautes[0] = nb_comms;
 			mesComms[nb_comms] = new Array();
-			mesComms[nb_comms][0] = id1;
+			mesComms[nb_comms][id1] = id1;
 			nb_comms++;
 		    }
 		}
