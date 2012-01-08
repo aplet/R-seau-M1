@@ -303,8 +303,8 @@ $(
 			if(id1 < id2)
 			{
 			    var n2 = monGraphe[id2];
-			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y)
-				.id = nb_comms;
+			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
+			    v1[id2].id = nb_comms;
 			    nb_comms = nb_comms + 1;
 			    n2.voisins[id1] = v1[id2];
 			    aretes[nb_comms - 1] = new Array();
