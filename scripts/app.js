@@ -298,6 +298,7 @@ $(
 			{
 			    var n2 = monGraphe[id2];
 			    v1[id2] = canvas.path("M " + n1.pos_x + " " + n1.pos_y + " L " + n2.pos_x + " " + n2.pos_y);
+			    n2.voisins[id1] = v1[id2];
 			}
 		    }
 		}
@@ -336,8 +337,10 @@ $(
 		{
 		    var n1 = monGraphe[id1];
 		    var v1 = n1.voisins;
+		    var enComm = 0;
 		    for(var id2 in v1) // Parcours des aretes
 		    {
+			nb_voisins++;
 			if(id1 < id2)
 			{
 			    var dejaEnComm = 0;
@@ -352,7 +355,11 @@ $(
 				}
 			    }
 
-			    if(dejaEnComm == 0)
+			    if(dejaEnComm == 1)
+			    {
+				enComm = 1;
+			    }
+			    else
 			    {
 				var commTmp = new Array();
 				commTmp[id1] = id1;
@@ -386,6 +393,7 @@ $(
 
 				if(tailleComm > 2)
 				{
+				    enComm = 1;
 				    mesComms[nb_comms] = commTmp;
 				    for(var k in commTmp)
 				    {
@@ -462,6 +470,12 @@ $(
 			    }
 */
 			}
+		    }
+
+		    if(enComm == 0)
+		    {
+			n1.communautes[0] = nb_comms;
+			nb_comms++;
 		    }
 		}
 		
